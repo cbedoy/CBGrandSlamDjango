@@ -36,6 +36,7 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'game'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -57,12 +58,12 @@ WSGI_APPLICATION = 'cbgrandslam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',   # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'ENGINE': 'django.db.backends.sqlite3',   # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
         'NAME': 'cbgrandslam',                  # Or pathto database file if using sqlite3.
-        'USER': 'root',                         # Not used with sqlite3.
-        'PASSWORD': '',                         # Not used with sqlite3.
-        'HOST': '127.0.0.1',                    # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
+        #·'USER': 'root',                         # Not used with sqlite3.
+        #'PASSWORD': '',                         # Not used with sqlite3.
+        #'HOST': '127.0.0.1',                    # Set to empty string for localhost. Not used with sqlite3.
+        #'PORT': '',                             # Set to empty string for default. Not used with sqlite3.
     }
 }
 
