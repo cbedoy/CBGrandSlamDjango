@@ -106,3 +106,19 @@ class Category(models.Model):
         return self.name+'-'+self.abreviature
 
 
+class Team(models.Model):
+    name = models.CharField(max_length=45)
+    playerA = models.ForeignKey(Player)
+    playerB = models.ForeignKey(Player)
+
+    def __unicode__(self):
+        return self.name
+
+class Single(models.Model):
+    name = models.CharField(max_length=45)
+    player = models.ForeignKey(Player)
+
+    def __unicode__(self):
+        return self.name
+
+
