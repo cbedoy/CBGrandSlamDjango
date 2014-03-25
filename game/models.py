@@ -44,6 +44,28 @@ class Trainer(models.Model):
     def __unicode__(self):
         return self.firstName + self.lastDate
 
+class Nationality(models.Model):
+    name = models.CharField(max_length=45)
+    abreviature = models.CharField(max_length=3)
+
+    def __unicode__(self):
+        return self.name+'-'+self.abreviature
+
+class Player(models.Model):
+    firstName = models.CharField(max_length=45)
+    lastName = models.CharField(max_length=45)
+    age = models.IntegerField()
+    sex = models.CharField(max_length=10)
+    height = models.FloatField()
+    weight = models.FloatField()
+    wins = models.IntegerField()
+    losts = models.IntegerField()
+    nationality = models.ForeignKey(Nationality)
+    trainer = models.ForeignKey(Trainer)
+
+    def __unicode__(self):
+        return self.firstName+self.lastName
+
 class Modality(models.Model):
     name = models.CharField(max_length=45)
 
@@ -59,27 +81,9 @@ class Game(models.Model):
     def __unicode__(self):
         return self.name
 
-class Player (models.Model):
-    firstName = models.CharField(max_length=45)
-    lastName = models.CharField(max_length=45)
-    age = models.IntegerField()
-    sex = models.CharField(max_length=10)
-    height = models.FloatField()
-    weight = models.FloatField()
-    wins = models.IntegerField()
-    losts = models.IntegerField()
-    nationality = models.ForeignKey(Nationality)
-    trainer = models.ForeignKey(Trainer)
 
-    def __unicode__(self):
-        return self.firstName+self.lastName
 
-class Nationality(models.Model):
-    name = models.CharField(max_length=45)
-    abreviature = models.CharField(max_length=3)
 
-    def __unicode__(self):
-        return self.name+'-'+self.abreviature
 
 class Award(models.Model):
     name = models.CharField(max_length=45)
