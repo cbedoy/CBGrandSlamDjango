@@ -11,5 +11,5 @@ class lugar(models.Model):
 
 class torneo(models.Model):
     nombre = models.CharField(max_length=45)
-    ano    = models.DateField('Año')
+    ano    = models.DateField('2007')
     idPais = models.ForeignKey(pais)
