@@ -108,8 +108,9 @@ class Category(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=45)
-    playerA = models.ForeignKey(Player)
-    playerB = models.ForeignKey(Player)
+    playerA = models.ForeignKey(Player, related_name='idA')
+    playerB = models.ForeignKey(Player, related_name='idB')
+
 
     def __unicode__(self):
         return self.name

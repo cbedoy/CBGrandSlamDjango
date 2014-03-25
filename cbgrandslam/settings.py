@@ -58,8 +58,12 @@ WSGI_APPLICATION = 'cbgrandslam.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',   # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'cbgrandslam.db',                  # Or pathto database file if using sqlite3.
+        'ENGINE': 'django.db.backends.mysql',    # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'slam',           # Or pathto database file if using sqlite3.
+        'USER': 'root',                  # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                         # Or pathto database file if using sqlite3.
     }
 }
 
@@ -67,6 +71,11 @@ DATABASES = {
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
+
+LANGUAGES = (
+    ('en', 'English'),
+    ('es', 'Spanish'),
+)
 
 TIME_ZONE = 'UTC'
 
