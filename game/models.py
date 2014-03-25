@@ -51,10 +51,13 @@ class Modality(models.Model):
         return self.name
 
 class Game(models.Model):
-    modality = models.CharField(max_length=45)
-
+    name = models.CharField(max_length=45)
+    trainer = models.ForeignKey(Trainer)
+    referee = models.ForeignKey(Referee)
+    player = models.ForeignKey(Player)
+    tournament = models.ForeignKey(Tournament)
     def __unicode__(self):
-        return self.modality
+        return self.name
 
 class Player (models.Model):
     firstName = models.CharField(max_length=45)
@@ -65,6 +68,8 @@ class Player (models.Model):
     weight = models.FloatField()
     wins = models.IntegerField()
     losts = models.IntegerField()
+    nationality = models.ForeignKey(Nationality)
+    trainer = models.ForeignKey(Trainer)
 
     def __unicode__(self):
         return self.firstName+self.lastName
@@ -80,6 +85,9 @@ class Award(models.Model):
     name = models.CharField(max_length=45)
     amount = models.FloatField()
     description = models.TextField(max_length=100)
+    tournament = models.ForeignKey(Tournament)
+    player = models.ForeignKey(Player)
+    trainer = models.ForeignKey(Trainer)
 
     def __unicode__(self):
         return self.name
