@@ -19,8 +19,8 @@ class Location(models.Model):
 
 class Tournament(models.Model):
     name = models.CharField(max_length=45)
-    year = models.DateField('2007')
-    name = models.TextField(max_length=300)
+    year = models.DateField()
+    description = models.TextField(max_length=100)
     country = models.ForeignKey(Country)
 
     def __unicode__(self):
@@ -78,6 +78,7 @@ class Game(models.Model):
     referee = models.ForeignKey(Referee)
     player = models.ForeignKey(Player)
     tournament = models.ForeignKey(Tournament)
+
     def __unicode__(self):
         return self.name
 
