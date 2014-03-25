@@ -25,3 +25,52 @@ class Tournament(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Referee(models.Model):
+    firstName   =   models.CharField(max_length=45)
+    lastName    =   models.CharField(max_length=45)
+    time        =   models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return self.firstName+self.lastName
+
+class Trainer(models.Model):
+    firstName = models.CharField(max_length=45)
+    lastName = models.CharField(max_length=45)
+    initialDate = models.DateField()
+    lastDate = models.DateField()
+
+    def __unicode__(self):
+        return self.firstName + self.lastDate
+
+class Game(models.Model):
+    modality = models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return  self.modality
+
+class Player (models.Model):
+    firstName = models.CharField(max_length=45)
+    lastName = models.CharField(max_length=45)
+    age = models.IntegerField()
+    sex = models.CharField(max_length=10)
+    height = models.FloatField()
+    weight = models.FloatField()
+    wins = models.IntegerField()
+    losts = models.IntegerField()
+
+
+
+class Nationality(models.Model):
+    name = models.CharField(max_length=45)
+    abreviature = models.CharField(max_length=3)
+
+class Award(models.Model):
+    amount = models.FloatField()
+    description = models.TextField(max_length=100)
+
+
+class Category(models.Model):
+    name = models.CharField(max_length=45)
+    abreviature = models.CharField(max_length=3)

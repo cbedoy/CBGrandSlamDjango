@@ -1,7 +1,7 @@
 from django.contrib import admin
-from game.models import lugar, torneo, pais
+from game.models import Location, Country, Tournament
 # Register your models here.
 
-admin.site.register(lugar)
-admin.site.register(torneo)
-admin.site.register(pais)
+admin.site.register(Location)
+admin.site.register(Country)
+admin.site.register(Tournament)
