@@ -9,4 +9,7 @@ class lugar(models.Model):
     nombre = models.CharField(max_length=45)
     idPais = models.ForeignKey(pais)
 
-
+class torneo(models.Model):
+    nombre = models.CharField(max_length=45)
+    ano    = models.DateField('Año')
+    idPais = models.ForeignKey(pais)
