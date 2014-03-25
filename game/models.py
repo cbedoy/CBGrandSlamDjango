@@ -44,6 +44,12 @@ class Trainer(models.Model):
     def __unicode__(self):
         return self.firstName + self.lastDate
 
+class Modality(models.Model):
+    name = models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return self.name
+
 class Game(models.Model):
     modality = models.CharField(max_length=45)
 
