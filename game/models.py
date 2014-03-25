@@ -60,17 +60,30 @@ class Player (models.Model):
     wins = models.IntegerField()
     losts = models.IntegerField()
 
-
+    def __unicode__(self):
+        return self.firstName+self.lastName
 
 class Nationality(models.Model):
     name = models.CharField(max_length=45)
     abreviature = models.CharField(max_length=3)
 
+    def __unicode__(self):
+        return self.name+'-'+self.abreviature
+
 class Award(models.Model):
+    name = models.CharField(max_length=45)
     amount = models.FloatField()
     description = models.TextField(max_length=100)
+
+    def __unicode__(self):
+        return self.name
 
 
 class Category(models.Model):
     name = models.CharField(max_length=45)
     abreviature = models.CharField(max_length=3)
+
+    def __unicode__(self):
+        return self.name+'-'+self.abreviature
+
+
