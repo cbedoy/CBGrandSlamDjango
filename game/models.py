@@ -28,12 +28,17 @@ class Tournament(models.Model):
 
 
 class Referee(models.Model):
+    time_l = (
+        ('QT', 'Quart time'),
+        ('MT', 'Medium time'),
+        ('AT', 'All time'),
+    )
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
-    time = models.CharField(max_length=45)
+    time = models.CharField(max_length=45, choices=time_l)
 
     def __unicode__(self):
-        return self.firstName+self.lastName
+        return self.firstName+' '+self.lastName
 
 class Trainer(models.Model):
     firstName = models.CharField(max_length=45)
@@ -42,29 +47,51 @@ class Trainer(models.Model):
     lastDate = models.DateField()
 
     def __unicode__(self):
-        return self.firstName + self.lastDate
+        return self.firstName+' '+self.lastDate
 
 class Nationality(models.Model):
     name = models.CharField(max_length=45)
+    link = models.CharField(max_length=150)
     abreviature = models.CharField(max_length=3)
 
     def __unicode__(self):
         return self.name+'-'+self.abreviature
 
 class Player(models.Model):
+    sex_l = (
+        ('F', 'Female'),
+        ('M', 'Masculine'),
+    )
+    age_l = (
+        ('20', '20'),
+        ('21', '21'),
+        ('22', '22'),
+        ('23', '23'),
+        ('24', '24'),
+        ('25', '25'),
+        ('26', '26'),
+        ('27', '27'),
+        ('28', '28'),
+        ('29', '29'),
+        ('30', '30'),
+    )
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
-    age = models.IntegerField()
-    sex = models.CharField(max_length=10)
+    age = models.IntegerField(choices=age_l)
+    sex = models.CharField(max_length=10, choices=sex_l)
     height = models.FloatField()
     weight = models.FloatField()
     wins = models.IntegerField()
     losts = models.IntegerField()
+    web = models.CharField(max_length=45, null=True)
+    facebook = models.CharField(max_length=45, null=True)
+    telephone = models.CharField(max_length=45, null=True)
+
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
 
     def __unicode__(self):
-        return self.firstName+self.lastName
+        return self.firstName+' '+self.lastName
 
 class Modality(models.Model):
     name = models.CharField(max_length=45)
