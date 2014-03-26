@@ -1,13 +1,17 @@
 from django.db import models
-from datetime import *
-
-# Create your models here.
+# ------------------------------------------
+#
+# Development by Carlos Bedoy
+#
+# carlos.bedoy@gmail.com
+#--------------------------------------------
 
 class Country(models.Model):
     name = models.CharField(max_length=45)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
+
 
 class Location(models.Model):
     name = models.CharField(max_length=45)
@@ -15,8 +19,9 @@ class Location(models.Model):
     latitud = models.FloatField()
     country = models.ForeignKey(Country)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
+
 
 class Tournament(models.Model):
     year_l = (
@@ -40,7 +45,7 @@ class Tournament(models.Model):
     description = models.TextField(max_length=100)
     country = models.ForeignKey(Country)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -54,28 +59,30 @@ class Referee(models.Model):
     lastName = models.CharField(max_length=45)
     time = models.CharField(max_length=45, choices=time_l)
 
-    def __str__(self):
-        return self.firstName+' '+self.lastName
+    def __unicode__(self):
+        return self.firstName + ' ' + self.lastName
+
 
 class Trainer(models.Model):
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
     initialDate = models.DateField()
     lastDate = models.DateField()
-
-    def __str__(self):
-        return self.firstName+' '+self.lastDate
+    unicode(initialDate)
+    unicode(lastDate)
 
     def __unicode__(self):
-        return unicode(self.initialDate)
+        return self.firstName + ' ' + self.lastName
+
 
 class Nationality(models.Model):
     name = models.CharField(max_length=45)
     link = models.CharField(max_length=150)
     abreviature = models.CharField(max_length=3)
 
-    def __str__(self):
-        return self.name+'-'+self.abreviature
+    def __unicode__(self):
+        return self.name + '-' + self.abreviature
+
 
 class Player(models.Model):
     sex_l = (
@@ -111,14 +118,16 @@ class Player(models.Model):
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
 
-    def __str__(self):
-        return self.firstName+' '+self.lastName
+    def __unicode__(self):
+        return self.firstName + ' ' + self.lastName
+
 
 class Modality(models.Model):
     name = models.CharField(max_length=45)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
+
 
 class Game(models.Model):
     name = models.CharField(max_length=45)
@@ -127,11 +136,8 @@ class Game(models.Model):
     player = models.ForeignKey(Player)
     tournament = models.ForeignKey(Tournament)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
-
-
-
 
 
 class Award(models.Model):
@@ -142,7 +148,7 @@ class Award(models.Model):
     player = models.ForeignKey(Player)
     trainer = models.ForeignKey(Trainer)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
@@ -150,8 +156,8 @@ class Category(models.Model):
     name = models.CharField(max_length=45)
     abreviature = models.CharField(max_length=3)
 
-    def __str__(self):
-        return self.name+'-'+self.abreviature
+    def __unicode__(self):
+        return self.name + '-' + self.abreviature
 
 
 class DoubleTeam(models.Model):
@@ -161,9 +167,9 @@ class DoubleTeam(models.Model):
     playerA = models.ForeignKey(Player, related_name='idA')
     playerB = models.ForeignKey(Player, related_name='idB')
 
-
-    def __str__(self):
+    def __unicode__(self):
         return self.name
+
 
 class SingleTeam(models.Model):
     name = models.CharField(max_length=45)
@@ -171,7 +177,7 @@ class SingleTeam(models.Model):
     twitter = models.CharField(max_length=45, null=True)
     player = models.ForeignKey(Player)
 
-    def __str__(self):
+    def __unicode__(self):
         return self.name
 
 
