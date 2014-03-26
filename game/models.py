@@ -136,6 +136,8 @@ class Category(models.Model):
 
 class DoubleTeam(models.Model):
     name = models.CharField(max_length=45)
+    facebook = models.CharField(max_length=45, null=True)
+    twitter = models.CharField(max_length=45, null=True)
     playerA = models.ForeignKey(Player, related_name='idA')
     playerB = models.ForeignKey(Player, related_name='idB')
 
@@ -145,6 +147,8 @@ class DoubleTeam(models.Model):
 
 class SingleTeam(models.Model):
     name = models.CharField(max_length=45)
+    facebook = models.CharField(max_length=45, null=True)
+    twitter = models.CharField(max_length=45, null=True)
     player = models.ForeignKey(Player)
 
     def __unicode__(self):
