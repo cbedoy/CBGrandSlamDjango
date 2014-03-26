@@ -134,7 +134,7 @@ class Category(models.Model):
         return self.name+'-'+self.abreviature
 
 
-class Team(models.Model):
+class DoubleTeam(models.Model):
     name = models.CharField(max_length=45)
     playerA = models.ForeignKey(Player, related_name='idA')
     playerB = models.ForeignKey(Player, related_name='idB')
@@ -143,7 +143,7 @@ class Team(models.Model):
     def __unicode__(self):
         return self.name
 
-class Single(models.Model):
+class SingleTeam(models.Model):
     name = models.CharField(max_length=45)
     player = models.ForeignKey(Player)
 
