@@ -1,0 +1,36 @@
+<div class="container">
+
+    
+    
+  
+  <hr />
+  {% for articulo in articulos %}
+    
+  <div class="art">
+    <h2>
+      {{ articulo.name }}
+          
+    </h2>
+        
+        
+    
+    <h3>
+      Publicado el {{ articulo.fecha }} por {{ articulo.autor }}
+          
+    </h3>
+        
+        
+    
+    <p>
+      {{ articulo.texto }}
+          
+    </p>
+      
+  </div>
+    
+    
+  
+  <hr />
+  {% endfor %}
+  
+</div>
