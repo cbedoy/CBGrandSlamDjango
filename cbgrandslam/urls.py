@@ -10,5 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^backend/', include(admin.site.urls)),
 
+    url(r'^$', 'game.views.home', name='home')
 
 )

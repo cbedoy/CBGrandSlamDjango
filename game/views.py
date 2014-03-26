@@ -1,6 +1,9 @@
-from django.shortcuts import render, render_to_responde
+from django.shortcuts import render_to_response
 
-# Create your views here.
+from django.shortcuts import render_to_response
+
+from game.models import Location
 
 def home(request):
-    return render_to_responde('index.html')
+    entradas = Location.objects.all()
+    return render_to_response('index.html', {'articulos' : entradas})
