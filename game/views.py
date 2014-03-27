@@ -2,6 +2,6 @@ from django.shortcuts import render_to_response
 
 from game.models import Location
 
-def home(request):
+def allLocations(request):
     data = Location.objects.all()
-    return render_to_response('index.html', {'articulos' : data})
+    return render_to_response('locations.html', {'articulos' : data})
