@@ -10,6 +10,6 @@ urlpatterns = patterns('',
 
     url(r'^backend/', include(admin.site.urls)),
 
-    url(r'^$', 'game.views.home', name='home')
+    url(r'^$', 'game.views.index', name='index')
 
 )
