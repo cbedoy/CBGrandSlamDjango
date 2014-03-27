@@ -57,22 +57,13 @@ def teams(request):
 
 def trainers(request):
     data = Trainer.objects.all()
-    return render_to_response('locations.html', dict(trainers=data), context_instance=RequestContext(request))
+    return render_to_response('locations.html', dict(trainers=data))
 
 
 def index(request):
-    project = {
-        'nombre': 'Carlos Alfredo Cervantes Bedoy',
-        'materia': 'Taller II',
-        'maestro': 'Guadalupe',
-        'proyecto': 'CBGrandSlam',
-        'carrera':'Tecnologias de informacion',
-        'grado':'8',
-        'grupo':'B',
-        'soporte':'Soporte a Oracle, MySQL, SQLite',
-        'lenguaje':'Python 2.7',
-        'framework':'Django, JQuery, Javascript, JQueryMobile'
+    data = {'nombre': 'Carlos Alfredo Cervantes Bedoy', 'materia': 'Taller II', 'maestro': 'Guadalupe',
+            'proyecto': 'CBGrandSlam', 'carrera': 'Tecnologias de informacion', 'grado': '8', 'grupo': 'B',
+            'soporte': 'Soporte a Oracle, MySQL, SQLite', 'lenguaje': 'Python 2.7',
+            'framework': 'Django, JQuery, Javascript, JQueryMobile'}
 
-        }
-
-    return render_to_response('index.html', project, context_instance=RequestContext(request))
+    return render_to_response('index.html', data)
