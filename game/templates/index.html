@@ -2,54 +2,51 @@
 <html>
 <head>
     <title>CBGrandSlam</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
+  <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+  <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
 </head>
 <body>
-<table border="1">
-    <tr>
-        <td>Nombre del proyecto</td>
-        <td>{{proyecto}}</td>
-    </tr>
-    <tr>
-        <td>Carrera</td>
-        <td>{{carrera}}</td>
-    </tr>
-    <tr>
-        <td>Grado</td>
-        <td>{{grado}}</td>
-    </tr>
-    <tr>
-        <td>Grupo</td>
-        <td>{{grupo}}</td>
-    </tr>
-    <tr>
-        <td>Materia</td>
-        <td>{{materia}}</td>
-    </tr>
-    <tr>
-        <td>Maestro</td>
-        <td>{{maestro}}</td>
-    </tr>
-    <tr>
-        <td>Alumno</td>
-        <td>{{nombre}}</td>
-    </tr>
-    <tr>
-        <td>Lenguaje de programacion</td>
-        <td>{{lenguaje}}</td>
-    </tr>
-    <tr>
-        <td>Soporte</td>
-        <td>{{soporte}}</td>
-    </tr>
-    <tr>
-        <td>Frameworks</td>
-        <td>{{framework}}</td>
-    </tr>
-    <tr>
-        <td>Github</td>
-        <td>https://github.com/cbedoy/CBGrandSlamDjango</td>
-    </tr>
 
-</table>
+<div data-role="page" id="inicio">
+
+
+
+
+	<div data-role="header">
+		<h1>{{proyecto}}</h1>
+	</div>
+
+	<div data-role="content">
+
+    <label> Proyecto </label>
+    <input type="text" value="{{proyecto}}">
+    <label> Carrera </label>
+    <input type="text" value="{{carrera}}">
+    <label> Materia </label>
+    <input type="text" value="{{materia}}">
+    <label> Maestro </label>
+    <input type="text" value="{{maestro}}">
+    <label> Alumno </label>
+    <input type="text" value="{{nombre}}">
+    <label> Lenguaje </label>
+    <input type="text" value="{{lenguaje}}">
+    <label> Framework </label>
+    <input type="text" value="{{framework}}">
+    <label> Soporte </label>
+    <input type="text" value="{{soporte}}">
+    <label> Github </label>
+    <input type="text" value="{{github}}">
+
+	</div>
+
+    <div data-role="footer">
+		<h1>{{nombre}}</h1>
+	</div>
+
+
+
+</div>
+
 </body>
 </html>
