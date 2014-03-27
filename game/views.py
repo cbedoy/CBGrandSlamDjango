@@ -2,49 +2,49 @@ from django.shortcuts import render_to_response
 
 from .models import *
 
-def getAwards(request):
+def awards(request):
     data = Award.objects.all()
     return render_to_response('locations.html', dict(awards=data))
 
-def getCategories(request):
+def categories(request):
     data = Category.objects.all()
     return render_to_response('locations.html', dict(categories=data))
 
-def getCountries(request):
+def countries(request):
     data = Country.objects.all()
     return render_to_response('locations.html', dict(countries=data))
 
-def getGames(request):
+def games(request):
     data = Game.objects.all()
     return render_to_response('locations.html', dict(games=data))
 
-def getLocations(request):
+def locations(request):
     data = Location.objects.all()
     return render_to_response('locations.html', dict(locations=data))
 
-def getModalities(request):
+def modalities(request):
     data = Modality.objects.all()
     return render_to_response('locations.html', dict(modalities=data))
 
-def getNationalities(request):
+def nationalities(request):
     data = Nationality.objects.all()
     return render_to_response('locations.html', dict(nationalities=data))
 
-def getPlayers(request):
+def players(request):
     data = Player.objects.all()
     return render_to_response('locations.html', dict(players=data))
 
-def getReferees(request):
+def referees(request):
     data = Referee.objects.all()
     return render_to_response('locations.html', dict(referees=data))
 
-def getTeams(request):
+def teams(request):
     doubleTeams = DoubleTeam.objects.all()
     singleTeams = SingleTeam.objects.all()
     data = [doubleTeams, singleTeams]
     return render_to_response('locations.html', dict(teams=data))
 
-def getTrainers(request):
+def trainers(request):
     data = Trainer.objects.all()
     return render_to_response('locations.html', dict(trainers=data))
 
