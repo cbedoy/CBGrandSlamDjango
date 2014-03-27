@@ -1,63 +1,63 @@
 from django.shortcuts import render_to_response
-
+from django.template import RequestContext
 from .models import *
 
 
 def awards(request):
     data = Award.objects.all()
-    return render_to_response('locations.html', dict(awards=data))
+    return render_to_response('locations.html', dict(awards=data), context_instance=RequestContext(request))
 
 
 def categories(request):
     data = Category.objects.all()
-    return render_to_response('locations.html', dict(categories=data))
+    return render_to_response('locations.html', dict(categories=data), context_instance=RequestContext(request))
 
 
 def countries(request):
     data = Country.objects.all()
-    return render_to_response('locations.html', dict(countries=data))
+    return render_to_response('locations.html', dict(countries=data), context_instance=RequestContext(request))
 
 
 def games(request):
     data = Game.objects.all()
-    return render_to_response('locations.html', dict(games=data))
+    return render_to_response('locations.html', dict(games=data), context_instance=RequestContext(request))
 
 
 def locations(request):
     data = Location.objects.all()
-    return render_to_response('locations.html', dict(locations=data))
+    return render_to_response('locations.html', dict(locations=data), context_instance=RequestContext(request))
 
 
 def modalities(request):
     data = Modality.objects.all()
-    return render_to_response('locations.html', dict(modalities=data))
+    return render_to_response('locations.html', dict(modalities=data), context_instance=RequestContext(request))
 
 
 def nationalities(request):
     data = Nationality.objects.all()
-    return render_to_response('locations.html', dict(nationalities=data))
+    return render_to_response('locations.html', dict(nationalities=data), context_instance=RequestContext(request))
 
 
 def players(request):
     data = Player.objects.all()
-    return render_to_response('locations.html', dict(players=data))
+    return render_to_response('locations.html', dict(players=data), context_instance=RequestContext(request))
 
 
 def referees(request):
     data = Referee.objects.all()
-    return render_to_response('locations.html', dict(referees=data))
+    return render_to_response('locations.html', dict(referees=data), context_instance=RequestContext(request))
 
 
 def teams(request):
     doubleTeams = DoubleTeam.objects.all()
     singleTeams = SingleTeam.objects.all()
     data = [doubleTeams, singleTeams]
-    return render_to_response('locations.html', dict(teams=data))
+    return render_to_response('locations.html', dict(teams=data), context_instance=RequestContext(request))
 
 
 def trainers(request):
     data = Trainer.objects.all()
-    return render_to_response('locations.html', dict(trainers=data))
+    return render_to_response('locations.html', dict(trainers=data), context_instance=RequestContext(request))
 
 
 def index(request):
@@ -75,4 +75,4 @@ def index(request):
 
         }
 
-    return render_to_response('index.html', project)
+    return render_to_response('index.html', project, context_instance=RequestContext(request))
