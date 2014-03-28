@@ -59,5 +59,5 @@ def index(request):
     return render_to_response('index.html', data)
 
 def test(request):
-    data = ('campo1', 'campo2')
-    return render_to_response('test.html', data,  context_instance=RequestContext(request))
+    data = Country.objects.all()
+    return render_to_response('test.html', {"data": data},  context_instance=RequestContext(request))
