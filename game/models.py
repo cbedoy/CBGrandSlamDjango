@@ -84,6 +84,25 @@ class Nationality(models.Model):
         return self.name + '-' + self.abreviature
 
 
+class Modality(models.Model):
+    name_l = (
+        ('SINGLE-M', 'SINGLE-M'),
+        ('TEAM-M', 'TEAM-M'),
+        ('SINGLE-F', 'SINGLE-F'),
+        ('TEAM-F', 'TEAM-F'),
+        ('MIX', 'MIX'),
+    )
+    name = models.CharField(max_length=10, choices=name_l)
+    def __unicode__(self):
+        return self.name
+
+class Team(models.Model):
+    name = models.CharField(max_length=45)
+    modality = models.ForeignKey(Modality)
+
+    def __unicode__(self):
+        return self.name + ' => ' + self.modality.name
+
 class Player(models.Model):
     sex_l = (
         ('F', 'Female'),
@@ -117,20 +136,10 @@ class Player(models.Model):
 
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
+    team = models.ForeignKey(Team)
 
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
-
-
-class Game(models.Model):
-    name = models.CharField(max_length=45)
-    referee = models.ForeignKey(Referee)
-    player = models.ForeignKey(Player)
-    tournament = models.ForeignKey(Tournament)
-
-    def __unicode__(self):
-        return self.name
-
 
 class Award(models.Model):
     name = models.CharField(max_length=45)
@@ -144,31 +153,13 @@ class Award(models.Model):
         return self.name
 
 
-
-
-
-class DoubleTeam(models.Model):
-    name = models.CharField(max_length=45)
-    facebook = models.CharField(max_length=45, null=True)
-    twitter = models.CharField(max_length=45, null=True)
-    playerA = models.ForeignKey(Player, related_name='idA')
-    playerB = models.ForeignKey(Player, related_name='idB')
-
+class Game(models.Model):
+    modality = models.ForeignKey(Modality)
+    referee = models.ForeignKey(Referee)
+    team = models.ForeignKey(Team)
+    tournament = models.ForeignKey(Tournament)
     def __unicode__(self):
         return self.name
-
-
-class SingleTeam(models.Model):
-    name = models.CharField(max_length=45)
-    facebook = models.CharField(max_length=45, null=True)
-    twitter = models.CharField(max_length=45, null=True)
-    player = models.ForeignKey(Player)
-
-    def __unicode__(self):
-        return self.name
-
-
-
 
 
 
