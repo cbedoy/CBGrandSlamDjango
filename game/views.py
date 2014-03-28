@@ -59,4 +59,23 @@ def index(request):
     return render_to_response('index.html', data)
 
 def test(request):
-    return render_to_response('test.html',  context_instance=RequestContext(request))
+    data = Country.objects.all()
+    return render_to_response('test.html', {"data": data},  context_instance=RequestContext(request))
+
+
+def test_dos(request):
+
+    if request.method == 'POST':
+        # formulario enviado
+        form = LocationsForm(request.POST)
+
+        if form.is_valid():
+            # formulario validado correctamente
+            form.save()
+            return HttpResponseRedirect('/')
+
+    else:
+        # formulario inicial
+        form = LocationsForm()
+
+    return render_to_response('testV.html', { 'form': form}, context_instance=RequestContext(request))
