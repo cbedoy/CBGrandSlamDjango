@@ -25,20 +25,20 @@ class Location(models.Model):
 
 class Tournament(models.Model):
     year_l = (
-        ('2010', '2010'),
-        ('2011', '2011'),
-        ('2012', '2012'),
-        ('2013', '2013'),
-        ('2014', '2014'),
-        ('2015', '2015'),
-        ('2016', '2016'),
-        ('2017', '2017'),
-        ('2018', '2018'),
-        ('2019', '2019'),
-        ('2020', '2020'),
-        ('2021', '2021'),
-        ('2022', '2022'),
-        ('2023', '2023'),
+        (2010, '2010'),
+        (2011, '2011'),
+        (2012, '2012'),
+        (2013, '2013'),
+        (2014, '2014'),
+        (2015, '2015'),
+        (2016, '2016'),
+        (2017, '2017'),
+        (2018, '2018'),
+        (2019, '2019'),
+        (2020, '2020'),
+        (2021, '2021'),
+        (2022, '2022'),
+        (2023, '2023'),
     )
     name = models.CharField(max_length=45)
     year = models.IntegerField(choices=year_l)
@@ -99,7 +99,8 @@ class Modality(models.Model):
 class Team(models.Model):
     name = models.CharField(max_length=45)
     modality = models.ForeignKey(Modality)
-
+    facebook = models.CharField(max_length=45)
+    twitter = models.CharField(max_length=45)
     def __unicode__(self):
         return self.name + ' => ' + self.modality.name
 
@@ -109,17 +110,17 @@ class Player(models.Model):
         ('M', 'Masculine'),
     )
     age_l = (
-        ('20', '20'),
-        ('21', '21'),
-        ('22', '22'),
-        ('23', '23'),
-        ('24', '24'),
-        ('25', '25'),
-        ('26', '26'),
-        ('27', '27'),
-        ('28', '28'),
-        ('29', '29'),
-        ('30', '30'),
+        (20, '20'),
+        (21, '21'),
+        (22, '22'),
+        (23, '23'),
+        (24, '24'),
+        (25, '25'),
+        (26, '26'),
+        (27, '27'),
+        (28, '28'),
+        (29, '29'),
+        (30, '30'),
     )
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
@@ -128,8 +129,7 @@ class Player(models.Model):
     height = models.FloatField()
     weight = models.FloatField()
     games = models.IntegerField()
-    wins = models.IntegerField()
-    lost = models.IntegerField()
+    amount = models.FloatField()
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
     telephone = models.CharField(max_length=45, null=True)
@@ -154,9 +154,9 @@ class Award(models.Model):
 
 
 class Game(models.Model):
-    modality = models.ForeignKey(Modality)
     referee = models.ForeignKey(Referee)
-    team = models.ForeignKey(Team)
+    teamA = models.ForeignKey(Team, related_name='idA')
+    teamB = models.ForeignKey(Team, related_name='idB')
     tournament = models.ForeignKey(Tournament)
     def __unicode__(self):
         return self.name
