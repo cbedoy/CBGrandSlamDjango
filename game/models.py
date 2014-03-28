@@ -122,16 +122,8 @@ class Player(models.Model):
         return self.firstName + ' ' + self.lastName
 
 
-class Modality(models.Model):
-    name = models.CharField(max_length=45)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Game(models.Model):
     name = models.CharField(max_length=45)
-    trainer = models.ForeignKey(Trainer)
     referee = models.ForeignKey(Referee)
     player = models.ForeignKey(Player)
     tournament = models.ForeignKey(Tournament)
@@ -152,12 +144,7 @@ class Award(models.Model):
         return self.name
 
 
-class Category(models.Model):
-    name = models.CharField(max_length=45)
-    abreviature = models.CharField(max_length=3)
 
-    def __unicode__(self):
-        return self.name + '-' + self.abreviature
 
 
 class DoubleTeam(models.Model):
@@ -179,6 +166,9 @@ class SingleTeam(models.Model):
 
     def __unicode__(self):
         return self.name
+
+class Modality(models.Model):
+
 
 
 
