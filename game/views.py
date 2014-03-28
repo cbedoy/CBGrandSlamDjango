@@ -8,12 +8,6 @@ def awards(request):
     data = Award.objects.all()
     return render_to_response('locations.html', dict(awards=data), context_instance=RequestContext(request))
 
-
-def categories(request):
-    data = Category.objects.all()
-    return render_to_response('locations.html', dict(categories=data), context_instance=RequestContext(request))
-
-
 def countries(request):
     data = Country.objects.all()
     return render_to_response('locations.html', dict(countries=data), context_instance=RequestContext(request))
@@ -27,11 +21,6 @@ def games(request):
 def locations(request):
     data = Location.objects.all()
     return render_to_response('locations.html', dict(locations=data), context_instance=RequestContext(request))
-
-
-def modalities(request):
-    data = Modality.objects.all()
-    return render_to_response('locations.html', dict(modalities=data), context_instance=RequestContext(request))
 
 
 def nationalities(request):
@@ -68,3 +57,6 @@ def index(request):
             'framework': 'Django, JQuery, Javascript, JQueryMobile', 'github':'https://github.com/cbedoy/CBGrandSlamDjango'}
 
     return render_to_response('index.html', data)
+
+def test(request):
+    return render_to_response('test.html',  context_instance=RequestContext(request))
