@@ -4,7 +4,12 @@
     {% endblock %}
 
         {% block content %}
-            TEST
+
+        <form action="" method="post" name="">
+            {% for o in {data} %}
+                <input type="text" placeholder="{{o}}"/>
+            {% endfor %}
+            </form>
         {% endblock %}
 
     {% block footer %}

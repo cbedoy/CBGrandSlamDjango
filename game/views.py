@@ -59,4 +59,5 @@ def index(request):
     return render_to_response('index.html', data)
 
 def test(request):
-    return render_to_response('test.html',  context_instance=RequestContext(request))
+    data = ('campo1', 'campo2')
+    return render_to_response('test.html', data,  context_instance=RequestContext(request))
