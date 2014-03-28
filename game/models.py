@@ -25,20 +25,20 @@ class Location(models.Model):
 
 class Tournament(models.Model):
     year_l = (
-        ('2010', '2010'),
-        ('2011', '2011'),
-        ('2012', '2012'),
-        ('2013', '2013'),
-        ('2014', '2014'),
-        ('2015', '2015'),
-        ('2016', '2016'),
-        ('2017', '2017'),
-        ('2018', '2018'),
-        ('2019', '2019'),
-        ('2020', '2020'),
-        ('2021', '2021'),
-        ('2022', '2022'),
-        ('2023', '2023'),
+        (2010, '2010'),
+        (2011, '2011'),
+        (2012, '2012'),
+        (2013, '2013'),
+        (2014, '2014'),
+        (2015, '2015'),
+        (2016, '2016'),
+        (2017, '2017'),
+        (2018, '2018'),
+        (2019, '2019'),
+        (2020, '2020'),
+        (2021, '2021'),
+        (2022, '2022'),
+        (2023, '2023'),
     )
     name = models.CharField(max_length=45)
     year = models.IntegerField(choices=year_l)
@@ -84,23 +84,43 @@ class Nationality(models.Model):
         return self.name + '-' + self.abreviature
 
 
+class Modality(models.Model):
+    name_l = (
+        ('SINGLE-M', 'SINGLE-M'),
+        ('TEAM-M', 'TEAM-M'),
+        ('SINGLE-F', 'SINGLE-F'),
+        ('TEAM-F', 'TEAM-F'),
+        ('MIX', 'MIX'),
+    )
+    name = models.CharField(max_length=10, choices=name_l)
+    def __unicode__(self):
+        return self.name
+
+class Team(models.Model):
+    name = models.CharField(max_length=45)
+    modality = models.ForeignKey(Modality)
+    facebook = models.CharField(max_length=45)
+    twitter = models.CharField(max_length=45)
+    def __unicode__(self):
+        return self.name + ' => ' + self.modality.name
+
 class Player(models.Model):
     sex_l = (
         ('F', 'Female'),
         ('M', 'Masculine'),
     )
     age_l = (
-        ('20', '20'),
-        ('21', '21'),
-        ('22', '22'),
-        ('23', '23'),
-        ('24', '24'),
-        ('25', '25'),
-        ('26', '26'),
-        ('27', '27'),
-        ('28', '28'),
-        ('29', '29'),
-        ('30', '30'),
+        (20, '20'),
+        (21, '21'),
+        (22, '22'),
+        (23, '23'),
+        (24, '24'),
+        (25, '25'),
+        (26, '26'),
+        (27, '27'),
+        (28, '28'),
+        (29, '29'),
+        (30, '30'),
     )
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
@@ -109,28 +129,17 @@ class Player(models.Model):
     height = models.FloatField()
     weight = models.FloatField()
     games = models.IntegerField()
-    wins = models.IntegerField()
-    lost = models.IntegerField()
+    amount = models.FloatField()
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
     telephone = models.CharField(max_length=45, null=True)
 
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
+    team = models.ForeignKey(Team)
 
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
-
-
-class Game(models.Model):
-    name = models.CharField(max_length=45)
-    referee = models.ForeignKey(Referee)
-    player = models.ForeignKey(Player)
-    tournament = models.ForeignKey(Tournament)
-
-    def __unicode__(self):
-        return self.name
-
 
 class Award(models.Model):
     name = models.CharField(max_length=45)
@@ -144,31 +153,13 @@ class Award(models.Model):
         return self.name
 
 
-
-
-
-class DoubleTeam(models.Model):
-    name = models.CharField(max_length=45)
-    facebook = models.CharField(max_length=45, null=True)
-    twitter = models.CharField(max_length=45, null=True)
-    playerA = models.ForeignKey(Player, related_name='idA')
-    playerB = models.ForeignKey(Player, related_name='idB')
-
+class Game(models.Model):
+    referee = models.ForeignKey(Referee)
+    teamA = models.ForeignKey(Team, related_name='idA')
+    teamB = models.ForeignKey(Team, related_name='idB')
+    tournament = models.ForeignKey(Tournament)
     def __unicode__(self):
         return self.name
-
-
-class SingleTeam(models.Model):
-    name = models.CharField(max_length=45)
-    facebook = models.CharField(max_length=45, null=True)
-    twitter = models.CharField(max_length=45, null=True)
-    player = models.ForeignKey(Player)
-
-    def __unicode__(self):
-        return self.name
-
-class Modality(models.Model):
-
 
 
 
