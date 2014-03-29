@@ -8,17 +8,17 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
 
-    url(r'^Award/', 'game.views.addAward'),
-    url(r'^Category/', 'game.views.addCategory'),
-    url(r'^Country/', 'game.views.addCountry'),
-    url(r'^Game/', 'game.views.addGame'),
-    url(r'^Location/', 'game.views.addLocation'),
-    url(r'^Modality/', 'game.views.addModality'),
-    url(r'^Nationality/', 'game.views.addNationality'),
-    url(r'^Player/', 'game.views.addPlayer'),
-    url(r'^Referee/', 'game.views.addReferee'),
-    url(r'^Team/', 'game.views.addTeam'),
-    url(r'^Trainer/', 'game.views.addTrainer'),
+    url(r'award/', 'game.views.newAward'),
+    #url(r'^category/', 'game.views.addCategory'),
+    url(r'^country/', 'game.views.newCountry'),
+    url(r'^game/', 'game.views.newGame'),
+    url(r'^location/', 'game.views.newLocation'),
+    url(r'^modality/', 'game.views.newModality'),
+    url(r'^nationality/', 'game.views.newNationality'),
+    url(r'^player/', 'game.views.newPlayer'),
+    url(r'^referee/', 'game.views.newReferee'),
+    url(r'^team/', 'game.views.newTeam'),
+    url(r'^trainer/', 'game.views.newTrainer'),
 
 
 
