@@ -8,7 +8,8 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
 
-    url(r'award/', 'game.views.newAward'),
+    url(r'^', 'game.views.index'),
+    url(r'^award/', 'game.views.newAward'),
     #url(r'^category/', 'game.views.addCategory'),
     url(r'^country/', 'game.views.newCountry'),
     url(r'^game/', 'game.views.newGame'),
