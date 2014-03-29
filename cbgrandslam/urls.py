@@ -1,6 +1,7 @@
 from django.conf.urls import patterns, include, url
 
 from django.contrib import admin
+from game import urls
 admin.autodiscover()
 
 urlpatterns = patterns('',
@@ -8,7 +9,10 @@ urlpatterns = patterns('',
 
     #url(r'^$', 'game.views.test', name='test').
 
-    url(r'^test/', 'game.views.test_dos', name='test_dos'),
+
+    #ADD items
+
+    url(r'^game/', include('game.urls')),
 
 
 
