@@ -8,7 +8,10 @@ urlpatterns = patterns('',
 
     #url(r'^$', 'game.views.test', name='test').
 
-    url(r'^test/', 'game.views.test_dos', name='test_dos'),
+
+    #ADD items
+
+    url(r'^game/', 'game.views.test_dos'),
 
 
 
