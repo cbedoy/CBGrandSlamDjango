@@ -11,7 +11,7 @@ urlpatterns = patterns('',
 
 
     #ADD items
-
+    url(r'^$', 'game.views.index', name='index'),
     url(r'^game/', include('game.urls')),
 
 
