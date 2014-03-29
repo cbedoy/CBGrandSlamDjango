@@ -4,7 +4,13 @@
     {% endblock %}
 
         {% block content %}
-            TEST
+
+        <ul data-role="listview" data-theme="a">
+             {% for o in data %}
+	        <li data-theme="a"><a href="#">{{o.name}}</a></li>
+	        {% endfor %}
+        </ul>
+
         {% endblock %}
 
     {% block footer %}

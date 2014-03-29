@@ -13,29 +13,27 @@
 <body>
 <div data-role="page" id="{% block name-page %}{% endblock %}">
 
-    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-        <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-            <!--
-				<li data-filtertext="wai-aria voiceover accessibility screen reader">
-				    <a href="../about/accessibility.html">Accessibility</a>
-			    </li>
-			-->
-            {% block panel-left %}{% endblock %}
+    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="b">
+        <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+
+
+            <li data-filtertext=""> <a href="#">Home</a></li>
+            <li data-filtertext=""> <a href="git/Award/">Award</a></li>
+            <li data-filtertext=""> <a href="#">Category</a></li>
+            <li data-filtertext=""> <a href="#">Country</a></li>
+            <li data-filtertext=""> <a href="#">Game</a></li>
+            <li data-filtertext=""> <a href="#">Location</a></li>
+            <li data-filtertext=""> <a href="#">Modality</a></li>
+            <li data-filtertext=""> <a href="#">Nationality</a></li>
+            <li data-filtertext=""> <a href="#">Player</a></li>
+            <li data-filtertext=""> <a href="#">Referee</a></li>
+            <li data-filtertext=""> <a href="#">Team</a></li>
+            <li data-filtertext=""> <a href="#">Trainer</a></li>
+
 		</ul>
 
    	</div>
 
-    <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="a">
-        <ul data-role="listview" data-theme="a" data-divider-theme="a" style="margin-top:-16px;" class="nav-search">
-            <!--
-				<li data-filtertext="wai-aria voiceover accessibility screen reader">
-				    <a href="../about/accessibility.html">Accessibility</a>
-			    </li>
-			-->
-            {% block panel-right %}{% endblock %}
-		</ul>
-
-	</div>
 
 
 	<div data-role="header" data-theme="b">
@@ -44,15 +42,16 @@
 		    <a href="#add-form" data-icon="plus" data-iconpos="notext">Add</a>
 	</div>
 
-	<div data-role="content">
+	<div data-role="content" data-theme="b">
         {% block content %}{% endblock %}
 
 	</div>
 
-    <div data-role="footer">
-        <div data-role="navbar">
+    <div data-role="footer" data-theme="d">
+        <center>
 		{% block footer %}{% endblock %}
-	</div>
+        </center>
+
 	</div>
 
 
