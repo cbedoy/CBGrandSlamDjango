@@ -76,7 +76,10 @@ def newAward(request):
             return HttpResponseRedirect('/')
     else:
         form = AwardForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+
+    name = "New award"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 def newCategory(request):
     if request.method == 'POST':
@@ -86,7 +89,9 @@ def newCategory(request):
             return HttpResponseRedirect('/')
     else:
         form = CategoryForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New category"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 def newCountry(request):
     if request.method == 'POST':
@@ -96,7 +101,9 @@ def newCountry(request):
             return HttpResponseRedirect('/')
     else:
         form = CountryForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New country"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newGame(request):
@@ -107,7 +114,9 @@ def newGame(request):
             return HttpResponseRedirect('/')
     else:
         form = GameForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New game"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newLocation(request):
@@ -118,7 +127,9 @@ def newLocation(request):
             return HttpResponseRedirect('/')
     else:
         form = LocationForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New location"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newModality(request):
@@ -129,7 +140,9 @@ def newModality(request):
             return HttpResponseRedirect('/')
     else:
         form = ModalityForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New modality"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newNationality(request):
@@ -140,7 +153,9 @@ def newNationality(request):
             return HttpResponseRedirect('/')
     else:
         form = NationalityForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New nationality"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newPlayer(request):
@@ -151,7 +166,9 @@ def newPlayer(request):
             return HttpResponseRedirect('/')
     else:
         form = PlayerForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New player"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newReferee(request):
@@ -162,7 +179,9 @@ def newReferee(request):
             return HttpResponseRedirect('/')
     else:
         form = RefereeForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New referee"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newTeam(request):
@@ -173,7 +192,9 @@ def newTeam(request):
             return HttpResponseRedirect('/')
     else:
         form = TeamForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New team"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
 
 def newTrainer(request):
@@ -184,5 +205,7 @@ def newTrainer(request):
             return HttpResponseRedirect('/')
     else:
         form = TrainerForm()
-    return render_to_response('new_item.html', {'form': form}, context_instance=RequestContext(request))
+    name = "New trainer"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
