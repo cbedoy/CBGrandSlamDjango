@@ -20,5 +20,8 @@ urlpatterns = patterns('',
     url(r'^trainer/', 'game.views.newTrainer', name='newTrainer'),
 
 
+    url(r'^get/', 'game.views.awards', name='awards'),
+
+
 
 )

@@ -6,8 +6,9 @@ from .forms import *
 
 
 def awards(request):
+    #data = Award.objects.raw("select * from game_award")
     data = Award.objects.all()
-    return render_to_response('locations.html', dict(awards=data), context_instance=RequestContext(request))
+    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
 
 def countries(request):
     data = Country.objects.all()
@@ -64,6 +65,11 @@ def test(request):
     return render_to_response('test.html', {"data": data},  context_instance=RequestContext(request))
 
 
+
+def javascript(request):
+    product1 = ['pendientes',  'pendiente pequeno',  '10 euros' ]
+    product2 = { 'name': 'pendientes' , 'description' : 'Pendientes aro bronce', 'price' : '14.6 euro' }
+    return render_to_response('javascript.html', {'product1' : product1,'product2' : product2,})
 #
 #
 # MODEL FORM
