@@ -11,43 +11,43 @@ def awards(request):
 
 
 def countries(request):
-    data = Country.objects.raw("select * from game_country")
-    return render_to_response('reports/getAwards.html', dict(countries=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_country")
+    return render_to_response('reports/getCountries.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def games(request):
-    data = Game.objects.raw("select * from game_game")
-    return render_to_response('reports/getAwards.html', dict(games=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_game")
+    return render_to_response('reports/getGames.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def locations(request):
-    data = Location.objects.raw("select * from game_location")
-    return render_to_response('reports/getAwards.html', dict(locations=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_location")
+    return render_to_response('reports/getLocations.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def nationalities(request):
-    data = Location.objects.raw("select * from game_nationality")
-    return render_to_response('reports/getAwards.html', dict(nationalities=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_nationality")
+    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def players(request):
-    data = Location.objects.raw("select * from game_player")
-    return render_to_response('reports/getAwards.html', dict(players=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_player")
+    return render_to_response('reports/getPlayers.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def referees(request):
-    data = Location.objects.raw("select * from game_referee")
-    return render_to_response('reports/getAwards.html', dict(referees=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_referee")
+    return render_to_response('reports/getReferees.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def teams(request):
     data = Location.objects.raw("select * from game_teams")
-    return render_to_response('reports/getAwards.html', dict(teams=data), context_instance=RequestContext(request))
+    return render_to_response('reports/getTeams.html', dict(teams=data), context_instance=RequestContext(request))
 
 
 def trainers(request):
-    data = Location.objects.raw("select * from game_trainer")
-    return render_to_response('reports/getAwards.html', dict(trainers=data))
+    data = Award.objects.raw("select * from game_trainer")
+    return render_to_response('reports/getTrainers.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def index(request):
