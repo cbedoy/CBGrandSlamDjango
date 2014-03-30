@@ -1,29 +1,25 @@
 {% extends "base.html" %}
     {% block header %}
-        Report Awards
+        Report trainers
     {% endblock %}
 
         {% block content %}
             <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
                 <thead>
                     <tr>
-                      <th data-priority="1">Name</th>
-                      <th data-priority="2">Amount</th>
-                      <th data-priority="2">Description</th>
-                      <th data-priority="3">Tournament</th>
-                      <th data-priority="4">Player</th>
-                      <th data-priority="5">Trainer</th>
+                      <th data-priority="1">First name</th>
+                      <th data-priority="2">Last name</th>
+                      <th data-priority="2">Initial date</th>
+                      <th data-priority="3">Last date</th>
                     </tr>
                   </thead>
                 <tbody>
             {% for o in form %}
                 <tr>
-                  <th>{{o.name}}</th>
-                  <td>$ {{o.amount}}</td>
-                  <td>{{o.description}}</td>
-                  <td>{{o.tournament}}</td>
-                  <td>{{o.player}}</td>
-                  <td>{{o.trainer}}</td>
+                  <th>{{o.firstName}}</th>
+                  <td>{{o.lastName}}</td>
+                  <td>{{o.initialDate}}</td>
+                  <td>{{o.lastDate}}</td>
                 </tr>
             {% endfor %}
                 <tbody>
