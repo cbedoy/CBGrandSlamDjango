@@ -19,16 +19,16 @@ urlpatterns = patterns('',
     url(r'^trainer/', 'game.views.newTrainer', name='newTrainer'),
 
 
-    url(r'^get/', 'game.views.awards', name='awards'),
-    url(r'^get/', 'game.views.countries', name='countries'),
-    url(r'^get/', 'game.views.games', name='games'),
-    url(r'^get/', 'game.views.locations', name='locations'),
-    url(r'^get/', 'game.views.modalities', name='modalities'),
-    url(r'^get/', 'game.views.nationalities', name='nationalities'),
-    url(r'^get/', 'game.views.players', name='players'),
-    url(r'^get/', 'game.views.referees', name='referee'),
-    url(r'^get/', 'game.views.teams', name='teams'),
-    url(r'^get/', 'game.views.trainers', name='trainers'),
+    url(r'^getAward/', 'game.views.awards', name='awards'),
+    url(r'^getCountry/', 'game.views.countries', name='countries'),
+    url(r'^getGame/', 'game.views.games', name='games'),
+    url(r'^getLocation/', 'game.views.locations', name='locations'),
+    url(r'^getModality/', 'game.views.modalities', name='modalities'),
+    url(r'^getNationality/', 'game.views.nationalities', name='nationalities'),
+    url(r'^getPlayer/', 'game.views.players', name='players'),
+    url(r'^getReferee/', 'game.views.referees', name='referee'),
+    url(r'^getTeam/', 'game.views.teams', name='teams'),
+    url(r'^getTrainer/', 'game.views.trainers', name='trainers'),
 
 
 

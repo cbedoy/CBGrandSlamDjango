@@ -27,7 +27,7 @@ def locations(request):
 
 def nationalities(request):
     data = Award.objects.raw("select * from game_nationality")
-    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
+    return render_to_response('reports/getNationalities.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def players(request):
@@ -48,6 +48,11 @@ def teams(request):
 def trainers(request):
     data = Award.objects.raw("select * from game_trainer")
     return render_to_response('reports/getTrainers.html', {"form": data}, context_instance=RequestContext(request))
+
+
+def modalities(request):
+    data = Award.objects.raw("select * from game_modality")
+    return render_to_response('reports/getModalities.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def index(request):
