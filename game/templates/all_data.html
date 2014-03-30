@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+    {% block header %}
+        {{name}}
+    {% endblock %}
+
+        {% block content %}
+            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+            {% for o in form %}
+                <p>{{o}}</p>
+            {% endfor %}
+
+            </table>
+        {% endblock %}
+
+    {% block footer %}
+        {{app}}
+    {% endblock %}
