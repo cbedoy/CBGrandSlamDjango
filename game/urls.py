@@ -8,7 +8,6 @@ admin.autodiscover()
 urlpatterns = patterns('',
 
     url(r'^award/', 'game.views.newAward', name='newAward'),
-    #url(r'^category/', 'game.views.addCategory'),
     url(r'^country/', 'game.views.newCountry', name='newCountry'),
     url(r'^game/', 'game.views.newGame', name='new'),
     url(r'^location/', 'game.views.newLocation', name='newLocation'),
@@ -21,6 +20,15 @@ urlpatterns = patterns('',
 
 
     url(r'^get/', 'game.views.awards', name='awards'),
+    url(r'^get/', 'game.views.countries', name='countries'),
+    url(r'^get/', 'game.views.games', name='games'),
+    url(r'^get/', 'game.views.locations', name='locations'),
+    url(r'^get/', 'game.views.modalities', name='modalities'),
+    url(r'^get/', 'game.views.nationalities', name='nationalities'),
+    url(r'^get/', 'game.views.players', name='players'),
+    url(r'^get/', 'game.views.referees', name='referee'),
+    url(r'^get/', 'game.views.teams', name='teams'),
+    url(r'^get/', 'game.views.trainers', name='trainers'),
 
 
 
