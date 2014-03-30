@@ -6,37 +6,36 @@ from .forms import *
 
 
 def awards(request):
-    #data = Award.objects.raw("select * from game_award")
-    data = Award.objects.all()
+    data = Award.objects.raw("select * from game_award")
     return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
 
 def countries(request):
-    data = Country.objects.all()
+    data = Country.objects.raw("select * from game_country")
     return render_to_response('locations.html', dict(countries=data), context_instance=RequestContext(request))
 
 
 def games(request):
-    data = Game.objects.all()
+    data = Game.objects.raw("select * from game_game")
     return render_to_response('locations.html', dict(games=data), context_instance=RequestContext(request))
 
 
 def locations(request):
-    data = Location.objects.all()
+    data = Location.objects.raw("select * from game_location")
     return render_to_response('locations.html', dict(locations=data), context_instance=RequestContext(request))
 
 
 def nationalities(request):
-    data = Nationality.objects.all()
+    data = Location.objects.raw("select * from game_nationality")
     return render_to_response('locations.html', dict(nationalities=data), context_instance=RequestContext(request))
 
 
 def players(request):
-    data = Player.objects.all()
+    data = Location.objects.raw("select * from game_player")
     return render_to_response('locations.html', dict(players=data), context_instance=RequestContext(request))
 
 
 def referees(request):
-    data = Referee.objects.all()
+    data = Location.objects.raw("select * from game_referee")
     return render_to_response('locations.html', dict(referees=data), context_instance=RequestContext(request))
 
 
@@ -48,7 +47,7 @@ def teams(request):
 
 
 def trainers(request):
-    data = Trainer.objects.all()
+    data = Location.objects.raw("select * from game_trainer")
     return render_to_response('locations.html', dict(trainers=data))
 
 
