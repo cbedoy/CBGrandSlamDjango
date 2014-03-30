@@ -7,23 +7,19 @@
             <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
                 <thead>
                     <tr>
-                      <th data-priority="1">Name</th>
-                      <th data-priority="2">Amount</th>
-                      <th data-priority="2">Description</th>
+                      <th data-priority="1">Referee</th>
+                      <th data-priority="2">Teams A</th>
+                      <th data-priority="2">Teams B</th>
                       <th data-priority="3">Tournament</th>
-                      <th data-priority="4">Player</th>
-                      <th data-priority="5">Trainer</th>
                     </tr>
                   </thead>
                 <tbody>
             {% for o in form %}
                 <tr>
-                  <th>{{o.name}}</th>
-                  <td>$ {{o.amount}}</td>
-                  <td>{{o.description}}</td>
+                  <th>{{o.referee}}</th>
+                  <td>{{o.teamA}}</td>
+                  <td>{{o.teamB}}</td>
                   <td>{{o.tournament}}</td>
-                  <td>{{o.player}}</td>
-                  <td>{{o.trainer}}</td>
                 </tr>
             {% endfor %}
                 <tbody>
