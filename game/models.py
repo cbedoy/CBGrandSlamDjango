@@ -1,10 +1,5 @@
 from django.db import models
-# ------------------------------------------
-#
-# Development by Carlos Bedoy
-#
-# carlos.bedoy@gmail.com
-#--------------------------------------------
+
 
 class Country(models.Model):
     name = models.CharField(max_length=45)

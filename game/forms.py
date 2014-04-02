@@ -9,9 +9,6 @@ class AwardForm(ModelForm):
     class Meta:
         model = Award
 
-#lass CategoryForm(ModelForm):
-#    class Meta:
-#        model = Category
 
 class CountryForm(ModelForm):
     class Meta:
