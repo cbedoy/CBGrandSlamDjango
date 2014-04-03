@@ -14,22 +14,50 @@
 <div data-role="page" id="{% block name-page %}{% endblock %}">
 
     <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="b">
-        <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
 
+        <div data-role="collapsible-set">
+            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+                <h3>GrandSlamm</h3>
+                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                    <li data-filtertext=""> <a href="{% url game.views.index %}">Home</a></li>
+                    <li data-filtertext=""> <a href="https://github.com/cbedoy/CBGrandSlamDjango">Github</a></li>
+                    <li data-filtertext=""> <a href="https://www.facebook.com/carlos.bedoy">Facebook</a></li>
 
-            <li data-filtertext=""> <a href="{% url game.views.index %}">Home</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newAward %}">Award</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newCountry %}">Country</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newGame %}">Game</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newLocation %}">Location</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newModality %}">Modality</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newNationality %}">Nationality</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newPlayer %}">Player</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newReferee %}">Referee</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newTeam %}">Team</a></li>
-            <li data-filtertext=""> <a href="{% url game.views.newTrainer %}">Trainer</a></li>
+                </ul>
+            </div>
+            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+                <h3>Add item</h3>
+                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                    <li data-filtertext=""> <a href="{% url game.views.newAward %}">Award</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newCountry %}">Country</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newGame %}">Game</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newLocation %}">Location</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newModality %}">Modality</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newNationality %}">Nationality</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newPlayer %}">Player</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newReferee %}">Referee</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newTeam %}">Team</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.newTrainer %}">Trainer</a></li>
+                </ul>
+            </div>
 
-		</ul>
+            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+                <h3>Report item</h3>
+                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                    <li data-filtertext=""> <a href="{% url game.views.awards %}">Award</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.countries %}">Country</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.games %}">Game</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.locations %}">Location</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.modalities %}">Modality</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.nationalities %}">Nationality</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.players %}">Player</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.referees %}">Referee</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.teams %}">Team</a></li>
+                    <li data-filtertext=""> <a href="{% url game.views.trainers %}">Trainer</a></li>
+                </ul>
+            </div>
+
+        </div>
 
    	</div>
 
