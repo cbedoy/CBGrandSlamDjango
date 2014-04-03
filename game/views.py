@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import *
@@ -5,49 +6,48 @@ from .forms import *
 
 
 def awards(request):
-    data = Award.objects.all()
-    return render_to_response('locations.html', dict(awards=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_award")
+    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
+
 
 def countries(request):
-    data = Country.objects.all()
-    return render_to_response('locations.html', dict(countries=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_country")
+    return render_to_response('reports/getCountries.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def games(request):
-    data = Game.objects.all()
-    return render_to_response('locations.html', dict(games=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_game")
+    return render_to_response('reports/getGames.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def locations(request):
-    data = Location.objects.all()
-    return render_to_response('locations.html', dict(locations=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_location")
+    return render_to_response('reports/getLocations.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def nationalities(request):
-    data = Nationality.objects.all()
-    return render_to_response('locations.html', dict(nationalities=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_nationality")
+    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def players(request):
-    data = Player.objects.all()
-    return render_to_response('locations.html', dict(players=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_player")
+    return render_to_response('reports/getPlayers.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def referees(request):
-    data = Referee.objects.all()
-    return render_to_response('locations.html', dict(referees=data), context_instance=RequestContext(request))
+    data = Award.objects.raw("select * from game_referee")
+    return render_to_response('reports/getReferees.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def teams(request):
-    doubleTeams = DoubleTeam.objects.all()
-    singleTeams = SingleTeam.objects.all()
-    data = [doubleTeams, singleTeams]
-    return render_to_response('locations.html', dict(teams=data), context_instance=RequestContext(request))
+    data = Location.objects.raw("select * from game_teams")
+    return render_to_response('reports/getTeams.html', dict(teams=data), context_instance=RequestContext(request))
 
 
 def trainers(request):
-    data = Trainer.objects.all()
-    return render_to_response('locations.html', dict(trainers=data))
+    data = Award.objects.raw("select * from game_trainer")
+    return render_to_response('reports/getTrainers.html', {"form": data}, context_instance=RequestContext(request))
 
 
 def index(request):
@@ -58,15 +58,21 @@ def index(request):
 
     return render_to_response('index.html', data)
 
+
 def test(request):
     data = Country.objects.all()
     return render_to_response('test.html', {"data": data},  context_instance=RequestContext(request))
 
 
+def javascript(request):
+    product1 = ['pendientes',  'pendiente pequeno',  '10 euros' ]
+    product2 = { 'name': 'pendientes' , 'description' : 'Pendientes aro bronce', 'price' : '14.6 euro' }
+    return render_to_response('javascript.html', {'product1' : product1,'product2' : product2,})
 #
 #
 # MODEL FORM
 #
+
 
 def newAward(request):
     if request.method == 'POST':
@@ -81,17 +87,7 @@ def newAward(request):
     proj = "CBGranSlam"
     return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
-def newCategory(request):
-    if request.method == 'POST':
-        form = CategoryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/')
-    else:
-        form = CategoryForm()
-    name = "New category"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
+
 
 def newCountry(request):
     if request.method == 'POST':

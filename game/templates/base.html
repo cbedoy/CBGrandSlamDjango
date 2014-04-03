@@ -17,22 +17,29 @@
         <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
 
 
-            <li data-filtertext=""> <a href="#">Home</a></li>
-            <li data-filtertext=""> <a href="git/Award/">Award</a></li>
-            <li data-filtertext=""> <a href="#">Category</a></li>
-            <li data-filtertext=""> <a href="#">Country</a></li>
-            <li data-filtertext=""> <a href="#">Game</a></li>
-            <li data-filtertext=""> <a href="#">Location</a></li>
-            <li data-filtertext=""> <a href="#">Modality</a></li>
-            <li data-filtertext=""> <a href="#">Nationality</a></li>
-            <li data-filtertext=""> <a href="#">Player</a></li>
-            <li data-filtertext=""> <a href="#">Referee</a></li>
-            <li data-filtertext=""> <a href="#">Team</a></li>
-            <li data-filtertext=""> <a href="#">Trainer</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.index %}">Home</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newAward %}">Award</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newCountry %}">Country</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newGame %}">Game</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newLocation %}">Location</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newModality %}">Modality</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newNationality %}">Nationality</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newPlayer %}">Player</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newReferee %}">Referee</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newTeam %}">Team</a></li>
+            <li data-filtertext=""> <a href="{% url game.views.newTrainer %}">Trainer</a></li>
 
 		</ul>
 
    	</div>
+
+    <div data-role="panel" data-position="right" data-position-fixed="false" data-display="reveal" id="add-form" data-theme="b">
+
+        <h3>Develop by Carlos Bedoy</h3>
+        <p>Mobile responsive application develop, with support Oracle, MySQL, SQLite database, also this project is develop with Django Framework and JQueryMobile framework</p>
+        <a href="#demo-links" data-rel="close" data-role="button" data-theme="c" data-icon="delete" data-inline="true">OK!</a>
+        </div>
+
 
 
 
@@ -59,3 +66,7 @@
 </div>
 </body>
 </html>
+
+
+
+

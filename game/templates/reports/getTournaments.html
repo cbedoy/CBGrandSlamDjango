@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+    {% block header %}
+        Report tournaments
+    {% endblock %}
+
+        {% block content %}
+            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                    <tr>
+                      <th data-priority="1">Name</th>
+                      <th data-priority="2">Year</th>
+                      <th data-priority="2">Description</th>
+                      <th data-priority="3">Country</th>
+                    </tr>
+                  </thead>
+                <tbody>
+            {% for o in form %}
+                <tr>
+                  <th>{{o.name}}</th>
+                  <td>{{o.year}}</td>
+                  <td>{{o.description}}</td>
+                  <td>{{o.country}}</td>
+                </tr>
+            {% endfor %}
+                <tbody>
+
+            </table>
+        {% endblock %}
+
+
+    {% block footer %}
+        {{app}}
+    {% endblock %}
