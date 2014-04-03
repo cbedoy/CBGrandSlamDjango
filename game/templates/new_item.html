@@ -4,9 +4,12 @@
     {% endblock %}
 
         {% block content %}
-
+          <form method="POST" id="new_item">
+            {% csrf_token %}
             {{ form }}
-
+              <br>
+            <a data-role="button" data-theme="b" onclick="$('#new_item').submit();">Add item</a>
+            </form>
         {% endblock %}
 
     {% block footer %}

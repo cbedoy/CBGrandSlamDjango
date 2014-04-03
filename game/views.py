@@ -84,7 +84,7 @@ def newAward(request):
         form = AwardForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getAward/')
     else:
         form = AwardForm()
 
@@ -99,7 +99,7 @@ def newCountry(request):
         form = CountryForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getCountry/')
     else:
         form = CountryForm()
     name = "New country"
@@ -112,7 +112,7 @@ def newGame(request):
         form = GameForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getGame/')
     else:
         form = GameForm()
     name = "New game"
@@ -125,7 +125,7 @@ def newLocation(request):
         form = LocationForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getLocation/')
     else:
         form = LocationForm()
     name = "New location"
@@ -138,7 +138,7 @@ def newModality(request):
         form = ModalityForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getModality/')
     else:
         form = ModalityForm()
     name = "New modality"
@@ -151,7 +151,7 @@ def newNationality(request):
         form = NationalityForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getNationality/')
     else:
         form = NationalityForm()
     name = "New nationality"
@@ -164,7 +164,7 @@ def newPlayer(request):
         form = PlayerForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getPlayer/')
     else:
         form = PlayerForm()
     name = "New player"
@@ -177,7 +177,7 @@ def newReferee(request):
         form = RefereeForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getReferee/')
     else:
         form = RefereeForm()
     name = "New referee"
@@ -190,7 +190,7 @@ def newTeam(request):
         form = TeamForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getTeam/')
     else:
         form = TeamForm()
     name = "New team"
@@ -203,7 +203,7 @@ def newTrainer(request):
         form = TrainerForm(request.POST)
         if form.is_valid():
             form.save()
-            return HttpResponseRedirect('/')
+            return HttpResponseRedirect('/game/getTrainer/')
     else:
         form = TrainerForm()
     name = "New trainer"
