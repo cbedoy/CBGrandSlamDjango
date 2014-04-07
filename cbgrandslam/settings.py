@@ -36,6 +36,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = (
+    'django_admin_bootstrapped',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -62,14 +63,26 @@ WSGI_APPLICATION = 'cbgrandslam.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',    # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'grandslam.db',           # Or pathto database file if using sqlite3.
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',    # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+#        'NAME': 'grandslam.db',           # Or pathto database file if using sqlite3.
         #'USER': 'root',                  # Not used with sqlite3.
         #'PASSWORD': '',                  # Not used with sqlite3.
         #'HOST': '127.0.0.1',                      # Set to empty string for localhost. Not used with sqlite3.
         #'PORT': '',                         # Or pathto database file if using sqlite3.
+#    }
+#}
+
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'orcl',
+        'USER': 'system',
+        'PASSWORD': 'Oracle123',
+        'HOST': '127.0.0.1',
+        'PORT': '1521',
     }
 }
 
