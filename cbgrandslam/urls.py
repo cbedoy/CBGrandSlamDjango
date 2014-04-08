@@ -11,12 +11,12 @@ urlpatterns = patterns('',
 
 
     #ADD items
-    url(r'^$', 'game.views.index', name='index'),
-    url(r'^game/', include('game.urls')),
+    #url(r'^$', 'game.views.index', name='index'),
+    #url(r'^game/', include('game.urls')),
 
-    url(r'^javascript/', 'game.views.javascript'),
+    #url(r'^javascript/', 'game.views.javascript'),
 
-
+    url(r'^location/', include('game.urls')),
 
 
 )

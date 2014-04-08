@@ -3,7 +3,9 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 from .models import *
 from .forms import *
-
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.core.urlresolvers import reverse_lazy
+from django.views.generic import TemplateView,ListView
 
 def awards(request):
     data = Award.objects.raw("select * from game_award")
@@ -210,3 +212,35 @@ def newTrainer(request):
     proj = "CBGranSlam"
     return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
 
+
+
+def location_edit(request, id):
+    currrentLocation = Location.objects.get(pk=id)
+    if request.method == 'POST':
+        form = LocationForm(instance=currrentLocation)
+        if form.is_valid():
+            form.save()
+            return HttpResponseRedirect('/game/getLocation/')
+    else:
+        form = LocationForm(instance=currrentLocation)
+    name = "New trainer"
+    proj = "CBGranSlam"
+    return render_to_response('new_item.html', {'form': form, "name": name, "app": proj}, context_instance=RequestContext(request))
+
+
+
+class LocationList(ListView):
+    model = Location
+
+
+class LocationCreate(CreateView):
+    model = Location
+    success_url = reverse_lazy('location_list')
+
+class LocationUpdate(UpdateView):
+    model = Location
+    success_url = reverse_lazy('location_list')
+
+class LocationDelete(DeleteView):
+    model = Location
+    success_url = reverse_lazy('location_list')

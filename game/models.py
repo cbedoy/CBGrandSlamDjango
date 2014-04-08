@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.urlresolvers import reverse
 
 class Country(models.Model):
     name = models.CharField(max_length=45)
@@ -16,6 +16,9 @@ class Location(models.Model):
 
     def __unicode__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('location_edit', kwargs={'pk': self.pk})
 
 
 class Tournament(models.Model):
