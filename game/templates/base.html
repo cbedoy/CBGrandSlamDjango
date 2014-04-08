@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
 </head>
 <body>
 <div data-role="page" id="{% block name-page %}{% endblock %}">
@@ -19,24 +20,43 @@
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>GrandSlamm</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-
-
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Github</a></li>
+                    <li><a href="#">Exit</a></li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-                <h3>Add item</h3>
+                <h3>Items</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-
+                    <li><a href="/grandslam/award/new">Award</a></li>
+                    <li><a href="/grandslam/country/new">Country</a></li>
+                    <li><a href="/grandslam/game/new">Game</a></li>
+                    <li><a href="/grandslam/location/new">Location</a></li>
+                    <li><a href="/grandslam/modality/new">Modality</a></li>
+                    <li><a href="/grandslam/nationality/new">Nationality</a></li>
+                    <li><a href="/grandslam/player/new">Player</a></li>
+                    <li><a href="/grandslam/referee/new">Referee</a></li>
+                    <li><a href="/grandslam/teams/new">Teams</a></li>
+                    <li><a href="/grandslam/tournament/new">Tournament</a></li>
+                    <li><a href="/grandslam/trainer/new">Trainer</a></li>
                 </ul>
             </div>
-
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-                <h3>Report item</h3>
+                <h3>Reports</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-
+                    <li><a href="/grandslam/award/list">Award</a></li>
+                    <li><a href="/grandslam/country/list">Country</a></li>
+                    <li><a href="/grandslam/game/list">Game</a></li>
+                    <li><a href="/grandslam/location/list">Location</a></li>
+                    <li><a href="/grandslam/modality/list">Modality</a></li>
+                    <li><a href="/grandslam/nationality/list">Nationality</a></li>
+                    <li><a href="/grandslam/player/list">Player</a></li>
+                    <li><a href="/grandslam/referee/list">Referee</a></li>
+                    <li><a href="/grandslam/teams/list">Teams</a></li>
+                    <li><a href="/grandslam/tournament/list">Tournament</a></li>
+                    <li><a href="/grandslam/trainer/list">Trainer</a></li>
                 </ul>
             </div>
-
         </div>
 
    	</div>
@@ -68,9 +88,6 @@
         </center>
 
 	</div>
-
-
-
 </div>
 </body>
 </html>

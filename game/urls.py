@@ -37,7 +37,7 @@ urlpatterns = patterns('',
     url(r'^nationality/list$', views.NationalityList.as_view(), name='nationality_list'),
     url(r'^nationality/new$', views.NationalityCreate.as_view(), name='nationality_new'),
     url(r'^nationality/edit/(?P<pk>\d+)$', views.NationalityUpdate.as_view(), name='nationality_edit'),
-    url(r'^nationality/delete/(?P<pk>\d+)$', views.NationalityDeleteeDelete.as_view(), name='nationality_delete'),
+    url(r'^nationality/delete/(?P<pk>\d+)$', views.NationalityDelete.as_view(), name='nationality_delete'),
 
     url(r'^player/list$', views.PlayerList.as_view(), name='player_list'),
     url(r'^player/new$', views.PlayerCreate.as_view(), name='player_new'),
