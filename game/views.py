@@ -7,55 +7,6 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
 from django.views.generic import TemplateView,ListView
 
-def awards(request):
-    data = Award.objects.raw("select * from game_award")
-    return render_to_response('reports/getAwards.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def countries(request):
-    data = Country.objects.raw("select * from game_country")
-    return render_to_response('reports/getCountries.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def games(request):
-    data = Game.objects.raw("select * from game_game")
-    return render_to_response('reports/getGames.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def locations(request):
-    data = Location.objects.raw("select * from game_location")
-    return render_to_response('reports/getLocations.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def nationalities(request):
-    data = Nationality.objects.raw("select * from game_nationality")
-    return render_to_response('reports/getNationalities.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def players(request):
-    data = Player.objects.raw("select * from game_player")
-    return render_to_response('reports/getPlayers.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def referees(request):
-    data = Referee.objects.raw("select * from game_referee")
-    return render_to_response('reports/getReferees.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def teams(request):
-    data = Team.objects.raw("select * from game_teams")
-    return render_to_response('reports/getTeams.html', dict(teams=data), context_instance=RequestContext(request))
-
-
-def trainers(request):
-    data = Trainer.objects.raw("select * from game_trainer")
-    return render_to_response('reports/getTrainers.html', {"form": data}, context_instance=RequestContext(request))
-
-
-def modalities(request):
-    data = Modality.objects.raw("select * from game_modality")
-    return render_to_response('reports/getModalities.html', {"form": data}, context_instance=RequestContext(request))
-
 
 def index(request):
     data = {'nombre': 'Carlos Alfredo Cervantes Bedoy', 'materia': 'Taller II', 'maestro': 'Guadalupe',
@@ -65,168 +16,7 @@ def index(request):
 
     return render_to_response('index.html', data)
 
-
-def test(request):
-    data = Country.objects.all()
-    return render_to_response('test.html', {"data": data},  context_instance=RequestContext(request))
-
-
-def javascript(request):
-    product1 = ['pendientes',  'pendiente pequeno',  '10 euros' ]
-    product2 = { 'name': 'pendientes' , 'description' : 'Pendientes aro bronce', 'price' : '14.6 euro' }
-    return render_to_response('javascript.html', {'product1' : product1,'product2' : product2,})
-#
-#
-# MODEL FORM
-#
-
-
-def newAward(request):
-    if request.method == 'POST':
-        form = AwardForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getAward/')
-    else:
-        form = AwardForm()
-
-    name = "New award"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-
-def newCountry(request):
-    if request.method == 'POST':
-        form = CountryForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getCountry/')
-    else:
-        form = CountryForm()
-    name = "New country"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newGame(request):
-    if request.method == 'POST':
-        form = GameForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getGame/')
-    else:
-        form = GameForm()
-    name = "New game"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newLocation(request):
-    if request.method == 'POST':
-        form = LocationForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getLocation/')
-    else:
-        form = LocationForm()
-    name = "New location"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newModality(request):
-    if request.method == 'POST':
-        form = ModalityForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getModality/')
-    else:
-        form = ModalityForm()
-    name = "New modality"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newNationality(request):
-    if request.method == 'POST':
-        form = NationalityForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getNationality/')
-    else:
-        form = NationalityForm()
-    name = "New nationality"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newPlayer(request):
-    if request.method == 'POST':
-        form = PlayerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getPlayer/')
-    else:
-        form = PlayerForm()
-    name = "New player"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newReferee(request):
-    if request.method == 'POST':
-        form = RefereeForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getReferee/')
-    else:
-        form = RefereeForm()
-    name = "New referee"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newTeam(request):
-    if request.method == 'POST':
-        form = TeamForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getTeam/')
-    else:
-        form = TeamForm()
-    name = "New team"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-def newTrainer(request):
-    if request.method == 'POST':
-        form = TrainerForm(request.POST)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getTrainer/')
-    else:
-        form = TrainerForm()
-    name = "New trainer"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name":name, "app":proj}, context_instance=RequestContext(request))
-
-
-
-def location_edit(request, id):
-    currrentLocation = Location.objects.get(pk=id)
-    if request.method == 'POST':
-        form = LocationForm(instance=currrentLocation)
-        if form.is_valid():
-            form.save()
-            return HttpResponseRedirect('/game/getLocation/')
-    else:
-        form = LocationForm(instance=currrentLocation)
-    name = "New trainer"
-    proj = "CBGranSlam"
-    return render_to_response('new_item.html', {'form': form, "name": name, "app": proj}, context_instance=RequestContext(request))
-
+#LOCATIONS --------------------------------------------------------------------------
 
 
 class LocationList(ListView):
@@ -237,10 +27,222 @@ class LocationCreate(CreateView):
     model = Location
     success_url = reverse_lazy('location_list')
 
+
 class LocationUpdate(UpdateView):
     model = Location
     success_url = reverse_lazy('location_list')
 
+
 class LocationDelete(DeleteView):
     model = Location
     success_url = reverse_lazy('location_list')
+
+#COUNTRY --------------------------------------------------
+
+
+class CountryList(ListView):
+    model = Country
+
+
+class CountryCreate(CreateView):
+    model = Country
+    success_url = reverse_lazy('country_list')
+
+
+class CountryUpdate(UpdateView):
+    model = Country
+    success_url = reverse_lazy('country_list')
+
+
+class CountryDelete(DeleteView):
+    model = Country
+    success_url = reverse_lazy('country_list')
+
+#TOURNAMENT -----------------------------------------------------
+
+
+class TournamentList(ListView):
+    model = Tournament
+
+
+class TournamentCreate(CreateView):
+    model = Tournament
+    success_url = reverse_lazy('tournament_list')
+
+
+class TournamentUpdate(UpdateView):
+    model = Tournament
+    success_url = reverse_lazy('tournament_list')
+
+
+class TournamentDelete(DeleteView):
+    model = Tournament
+    success_url = reverse_lazy('tournament_list')
+
+
+#REFEREE -----------------------------------------------------
+
+
+class RefereeList(ListView):
+    model = Referee
+
+
+class RefereeCreate(CreateView):
+    model = Referee
+    success_url = reverse_lazy('referee_list')
+
+
+class RefereeUpdate(UpdateView):
+    model = Referee
+    success_url = reverse_lazy('referee_list')
+
+
+class RefereeDelete(DeleteView):
+    model = Referee
+    success_url = reverse_lazy('referee_list')
+
+
+
+#TRAINER -----------------------------------------------------
+
+class TrainerList(ListView):
+    model = Trainer
+
+
+class TrainerCreate(CreateView):
+    model = Trainer
+    success_url = reverse_lazy('trainer_list')
+
+
+class TrainerUpdate(UpdateView):
+    model = Trainer
+    success_url = reverse_lazy('trainer_list')
+
+
+class TrainerDelete(DeleteView):
+    model = Trainer
+    success_url = reverse_lazy('trainer_list')
+
+
+
+#NATIONALITY -----------------------------------------------------
+
+class NationalityList(ListView):
+    model = Nationality
+
+
+class NationalityCreate(CreateView):
+    model = Nationality
+    success_url = reverse_lazy('nationality_list')
+
+
+class NationalityUpdate(UpdateView):
+    model = Nationality
+    success_url = reverse_lazy('nationality_list')
+
+
+class NationalityDelete(DeleteView):
+    model = Nationality
+    success_url = reverse_lazy('nationality_list')
+
+#Modality --------------------------
+
+class ModalityList(ListView):
+    model = Modality
+
+
+class ModalityCreate(CreateView):
+    model = Modality
+    success_url = reverse_lazy('modality_list')
+
+
+class ModalityUpdate(UpdateView):
+    model = Modality
+    success_url = reverse_lazy('modality_list')
+
+
+class ModalityDelete(DeleteView):
+    model = Modality
+    success_url = reverse_lazy('modality_list')
+
+#Teams --------------------------
+
+class TeamList(ListView):
+    model = Team
+
+
+class TeamCreate(CreateView):
+    model = Team
+    success_url = reverse_lazy('team_list')
+
+
+class TeamUpdate(UpdateView):
+    model = Team
+    success_url = reverse_lazy('team_list')
+
+
+class TeamDelete(DeleteView):
+    model = Team
+    success_url = reverse_lazy('team_list')
+
+##PLAYER -------------------------
+
+class PlayerList(ListView):
+    model = Team
+
+
+class PlayerCreate(CreateView):
+    model = Team
+    success_url = reverse_lazy('player_list')
+
+
+class PlayerUpdate(UpdateView):
+    model = Team
+    success_url = reverse_lazy('player_list')
+
+
+class PlayerDelete(DeleteView):
+    model = Team
+    success_url = reverse_lazy('player_list')
+
+
+##AWARD -------------------------
+
+class AwardList(ListView):
+    model = Award
+
+
+class AwardCreate(CreateView):
+    model = Award
+    success_url = reverse_lazy('award_list')
+
+
+class AwardUpdate(UpdateView):
+    model = Award
+    success_url = reverse_lazy('award_list')
+
+
+class AwardDelete(DeleteView):
+    model = Award
+    success_url = reverse_lazy('award_list')
+
+
+##GAME -------------------------
+
+class GameList(ListView):
+    model = Game
+
+
+class GameCreate(CreateView):
+    model = Game
+    success_url = reverse_lazy('game_list')
+
+
+class GameUpdate(UpdateView):
+    model = Game
+    success_url = reverse_lazy('game_list')
+
+
+class GameDelete(DeleteView):
+    model = Game
+    success_url = reverse_lazy('game_list')
