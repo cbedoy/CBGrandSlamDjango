@@ -24,15 +24,15 @@
                   <td>{{o.longitud}}</td>
                   <td>{{o.latitud}}</td>
                   <td>{{o.country}}</td>
-                  <td><a href="{% url location_edit o.id %}">Edit</a></td>
-                  <td><a href="{% url location_delete o.id %}">Delete</a></td>
+                  <td><a href="{% url location_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+                  <td><a href="{% url location_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
                 </tr>
             {% endfor %}
                 <tbody>
 
             </table>
         <br>
-        <a href="{% url location_new %}">New item</a>
+        <a href="{% url location_new %}" data-role="button" data-icon="plus" >New item</a>
         {% endblock %}
     {% block footer %}
         {{app}}

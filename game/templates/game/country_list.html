@@ -1,9 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+    {% block header %}
+        Report Country
+    {% endblock %}
 
-</body>
-</html>
+        {% block content %}
+            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                    <tr>
+                      <th data-priority="1">Id</th>
+                      <th data-priority="1">Name</th>
+                      <th data-priority="1"></th>
+                      <th data-priority="1"></th>
+                    </tr>
+                  </thead>
+                <tbody>
+            {% for o in object_list %}
+                <tr>
+                  <th>{{o.id}}</th>
+                  <th>{{o.name}}</th>
+                  <td><a href="{% url country_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+                  <td><a href="{% url country_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+                </tr>
+            {% endfor %}
+                <tbody>
+            </table>
+                <br>
+        <a href="{% url country_new %}" data-role="button" data-icon="plus" >New item</a>
+        {% endblock %}
+
+
+    {% block footer %}
+        {{app}}
+    {% endblock %}
