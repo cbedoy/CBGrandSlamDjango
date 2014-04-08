@@ -16,7 +16,7 @@ urlpatterns = patterns('',
 
     #url(r'^javascript/', 'game.views.javascript'),
 
-    url(r'^location/', include('game.urls')),
+    url(r'^grandslam/', include('game.urls')),
 
 
 )
