@@ -1,7 +1,7 @@
 {% extends "base.html" %}
         {% block content %}
 <form method="post">{% csrf_token %}
-    Are you sure you want to delete location: "{{ object }}" ?
+    Are you sure you want to delete player: "{{ object }}" ?
     <input type="submit" value="OK" />
 </form>
 {% endblock %}
