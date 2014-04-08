@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+    {% block header %}
+        Report trainers
+    {% endblock %}
+
+        {% block content %}
+            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                      <th data-priority="1">First name</th>
+                      <th data-priority="2">Last name</th>
+                      <th data-priority="2">Initial date</th>
+                      <th data-priority="3">Last date</th>
+<th data-priority="5">Edit</th>
+              <th data-priority="5">Delete</th>
+                    </tr>
+                  </thead>
+                <tbody>
+            {% for o in object_list %}
+                <tr>
+                    <th>{{o.id}}</th>
+                  <th>{{o.firstName}}</th>
+                  <td>{{o.lastName}}</td>
+                  <td>{{o.initialDate}}</td>
+                  <td>{{o.lastDate}}</td>
+              <td><a href="{% url trainer_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+                 <td><a href="{% url trainer_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+            </tr>
+        {% endfor %}
+            <tbody>
+        </table>
+    <br>
+    <a href="{% url trainer_new %}" data-role="button" data-icon="plus" >New item</a>
+    {% endblock %}
+
+
+    {% block footer %}
+        {{app}}
+    {% endblock %}

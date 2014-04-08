@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.css" />
     <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script src="http://code.jquery.com/mobile/1.3.1/jquery.mobile-1.3.1.min.js"></script>
+
 </head>
 <body>
 <div data-role="page" id="{% block name-page %}{% endblock %}">
@@ -19,44 +20,43 @@
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>GrandSlamm</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-                    <li data-filtertext=""> <a href="{% url game.views.index %}">Home</a></li>
-                    <li data-filtertext=""> <a href="https://github.com/cbedoy/CBGrandSlamDjango">Github</a></li>
-                    <li data-filtertext=""> <a href="https://www.facebook.com/carlos.bedoy">Facebook</a></li>
-
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Github</a></li>
+                    <li><a href="#">Exit</a></li>
                 </ul>
             </div>
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-                <h3>Add item</h3>
+                <h3>Items</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-                    <li data-filtertext=""> <a href="{% url game.views.newAward %}">Award</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newCountry %}">Country</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newGame %}">Game</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newLocation %}">Location</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newModality %}">Modality</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newNationality %}">Nationality</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newPlayer %}">Player</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newReferee %}">Referee</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newTeam %}">Team</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.newTrainer %}">Trainer</a></li>
+                    <li><a href="/grandslam/award/new" data-transition="pop">Award</a></li>
+                    <li><a href="/grandslam/country/new" data-transition="pop">Country</a></li>
+                    <li><a href="/grandslam/game/new" data-transition="pop">Game</a></li>
+                    <li><a href="/grandslam/location/new" data-transition="pop">Location</a></li>
+                    <li><a href="/grandslam/modality/new" data-transition="pop">Modality</a></li>
+                    <li><a href="/grandslam/nationality/new" data-transition="pop">Nationality</a></li>
+                    <li><a href="/grandslam/player/new" data-transition="pop">Player</a></li>
+                    <li><a href="/grandslam/referee/new" data-transition="pop">Referee</a></li>
+                    <li><a href="/grandslam/teams/new" data-transition="pop">Teams</a></li>
+                    <li><a href="/grandslam/tournament/new" data-transition="pop">Tournament</a></li>
+                    <li><a href="/grandslam/trainer/new" data-transition="pop">Trainer</a></li>
                 </ul>
             </div>
-
             <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
-                <h3>Report item</h3>
+                <h3>Reports</h3>
                 <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
-                    <li data-filtertext=""> <a href="{% url game.views.awards %}">Award</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.countries %}">Country</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.games %}">Game</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.locations %}">Location</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.modalities %}">Modality</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.nationalities %}">Nationality</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.players %}">Player</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.referees %}">Referee</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.teams %}">Team</a></li>
-                    <li data-filtertext=""> <a href="{% url game.views.trainers %}">Trainer</a></li>
+                    <li><a href="/grandslam/award/list" data-transition="slidefade">Award</a></li>
+                    <li><a href="/grandslam/country/list" data-transition="slidefade">Country</a></li>
+                    <li><a href="/grandslam/game/list" data-transition="slidefade">Game</a></li>
+                    <li><a href="/grandslam/location/list" data-transition="slidefade">Location</a></li>
+                    <li><a href="/grandslam/modality/list" data-transition="slidefade">Modality</a></li>
+                    <li><a href="/grandslam/nationality/list" data-transition="slidefade">Nationality</a></li>
+                    <li><a href="/grandslam/player/list" data-transition="slidefade">Player</a></li>
+                    <li><a href="/grandslam/referee/list" data-transition="slidefade">Referee</a></li>
+                    <li><a href="/grandslam/teams/list" data-transition="slidefade">Teams</a></li>
+                    <li><a href="/grandslam/tournament/list" data-transition="slidefade">Tournament</a></li>
+                    <li><a href="/grandslam/trainer/list" data-transition="slidefade">Trainer</a></li>
                 </ul>
             </div>
-
         </div>
 
    	</div>
@@ -88,9 +88,6 @@
         </center>
 
 	</div>
-
-
-
 </div>
 </body>
 </html>

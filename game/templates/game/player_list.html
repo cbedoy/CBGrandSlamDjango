@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% block header %}
+    Report players
+{% endblock %}
+
+    {% block content %}
+        <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+            <thead>
+                <tr>
+                  <th data-priority="1">Id</th>
+                  <th data-priority="1">First name</th>
+                  <th data-priority="2">Last name</th>
+                  <th data-priority="2">Age</th>
+                  <th data-priority="3">Sex</th>
+                  <th data-priority="4">Height</th>
+                  <th data-priority="5">Weight</th>
+                  <th data-priority="5">Games</th>
+                  <th data-priority="5">Amount</th>
+                  <th data-priority="5">Nationality</th>
+                  <th data-priority="5">Trainer</th>
+                    <th data-priority="5">Teams</th>
+                    <th data-priority="5">Edit</th>
+              <th data-priority="5">Delete</th>
+                </tr>
+              </thead>
+            <tbody>
+        {% for o in object_list %}
+            <tr>
+                <th>{{o.id}}</th>
+                <th>{{o.firstName}}</th>
+                 <th>{{o.lastName}}</th>
+                 <th>{{o.age}}</th>
+                 <th>{{o.sex}}</th>
+                 <th>{{o.height}}</th>
+                 <th>{{o.weight}}</th>
+                 <th>{{o.games}}</th>
+                 <th>{{o.amount}}</th>
+                 <th>{{o.nationality}}</th>
+                 <th>{{o.trainer}}</th>
+                 <th>{{o.team}}</th>
+                 <td><a href="{% url player_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
+                 <td><a href="{% url player_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
+            </tr>
+        {% endfor %}
+            <tbody>
+        </table>
+    <br>
+    <a href="{% url player_new %}" data-role="button" data-icon="plus" >New item</a>
+    {% endblock %}
+
+
+{% block footer %}
+    {{app}}
+{% endblock %}
