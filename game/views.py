@@ -188,21 +188,21 @@ class TeamDelete(DeleteView):
 ##PLAYER -------------------------
 
 class PlayerList(ListView):
-    model = Team
+    model = Player
 
 
 class PlayerCreate(CreateView):
-    model = Team
+    model = Player
     success_url = reverse_lazy('player_list')
 
 
 class PlayerUpdate(UpdateView):
-    model = Team
+    model = Player
     success_url = reverse_lazy('player_list')
 
 
 class PlayerDelete(DeleteView):
-    model = Team
+    model = Player
     success_url = reverse_lazy('player_list')
 
 
