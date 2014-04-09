@@ -64,4 +64,7 @@ urlpatterns = patterns('',
     url(r'^trainer/edit/(?P<pk>\d+)$', views.TrainerUpdate.as_view(), name='trainer_edit'),
     url(r'^trainer/delete/(?P<pk>\d+)$', views.TrainerDelete.as_view(), name='trainer_delete'),
 
+
+    url(r'^select$', 'game.views.query_test'),
+
 )
