@@ -126,8 +126,6 @@ class Player(models.Model):
     sex = models.CharField(max_length=10, choices=sex_l)
     height = models.FloatField()
     weight = models.FloatField()
-    games = models.IntegerField()
-    amount = models.FloatField()
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
     telephone = models.CharField(max_length=45, null=True)
