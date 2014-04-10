@@ -78,7 +78,7 @@ DATABASES = {
     }
 }
 
-
+#pdborcl
 #DATABASES = {
 #    'default': {
 #        'ENGINE': 'django.db.backends.oracle',

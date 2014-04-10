@@ -9,6 +9,8 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
 
+    url(r'^$', views.index, name='award_list'),
+
     url(r'^award/list$', views.AwardList.as_view(), name='award_list'),
     url(r'^award/new$', views.AwardCreate.as_view(), name='award_new'),
     url(r'^award/edit/(?P<pk>\d+)$', views.AwardUpdate.as_view(), name='award_edit'),

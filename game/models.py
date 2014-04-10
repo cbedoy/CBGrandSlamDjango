@@ -17,29 +17,11 @@ class Location(models.Model):
     def __unicode__(self):
         return self.name
 
-    def get_absolute_url(self):
-        return reverse('location_edit', kwargs={'pk': self.pk})
+
 
 
 class Tournament(models.Model):
-    year_l = (
-        (2010, '2010'),
-        (2011, '2011'),
-        (2012, '2012'),
-        (2013, '2013'),
-        (2014, '2014'),
-        (2015, '2015'),
-        (2016, '2016'),
-        (2017, '2017'),
-        (2018, '2018'),
-        (2019, '2019'),
-        (2020, '2020'),
-        (2021, '2021'),
-        (2022, '2022'),
-        (2023, '2023'),
-    )
     name = models.CharField(max_length=45)
-    year = models.IntegerField(choices=year_l)
     description = models.TextField(max_length=100)
     country = models.ForeignKey(Country)
 
@@ -123,7 +105,6 @@ class Player(models.Model):
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
     telephone = models.CharField(max_length=45, null=True)
-
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
 
@@ -145,6 +126,7 @@ class Game(models.Model):
     teamA = models.ForeignKey(Team, related_name='idA')
     teamB = models.ForeignKey(Team, related_name='idB')
     tournament = models.ForeignKey(Tournament)
+
     def __unicode__(self):
         return self.name
 
@@ -159,9 +141,27 @@ class Award(models.Model):
     def __unicode__(self):
         return self.name
 
+class GrandSlam(models.Model):
+    year_l = (
+        (2010, '2010'),
+        (2011, '2011'),
+        (2012, '2012'),
+        (2013, '2013'),
+        (2014, '2014'),
+        (2015, '2015'),
+        (2016, '2016'),
+        (2017, '2017'),
+        (2018, '2018'),
+        (2019, '2019'),
+        (2020, '2020'),
+        (2021, '2021'),
+        (2022, '2022'),
+        (2023, '2023'),
+    )
+    year = models.IntegerField(choices=year_l)
+    tournament = models.ForeignKey(Tournament)
 
-
-
-
+    def __unicode__(self):
+        return self.year
 
 
