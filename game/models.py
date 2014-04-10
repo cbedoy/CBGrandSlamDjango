@@ -94,13 +94,7 @@ class Modality(models.Model):
     def __unicode__(self):
         return self.name
 
-class Team(models.Model):
-    name = models.CharField(max_length=45)
-    modality = models.ForeignKey(Modality)
-    facebook = models.CharField(max_length=45)
-    twitter = models.CharField(max_length=45)
-    def __unicode__(self):
-        return self.name + ' => ' + self.modality.name
+
 
 class Player(models.Model):
     sex_l = (
@@ -132,22 +126,19 @@ class Player(models.Model):
 
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
-    team = models.ForeignKey(Team)
 
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
 
-class Award(models.Model):
+
+class Team(models.Model):
     name = models.CharField(max_length=45)
-    amount = models.FloatField()
-    description = models.TextField(max_length=100)
-    tournament = models.ForeignKey(Tournament)
+    facebook = models.CharField(max_length=45)
+    twitter = models.CharField(max_length=45)
     player = models.ForeignKey(Player)
-    trainer = models.ForeignKey(Trainer)
-
+    modality = models.ForeignKey(Modality)
     def __unicode__(self):
-        return self.name
-
+        return self.name + ' => ' + self.modality.name
 
 class Game(models.Model):
     referee = models.ForeignKey(Referee)
@@ -156,6 +147,20 @@ class Game(models.Model):
     tournament = models.ForeignKey(Tournament)
     def __unicode__(self):
         return self.name
+
+class Award(models.Model):
+    name = models.CharField(max_length=45)
+    amount = models.FloatField()
+    description = models.TextField(max_length=100)
+    game = models.ForeignKey(Game)
+    player = models.ForeignKey(Player)
+    trainer = models.ForeignKey(Trainer)
+
+    def __unicode__(self):
+        return self.name
+
+
+
 
 
 
