@@ -61,7 +61,7 @@ class Team(models.Model):
     name = models.CharField(max_length=45)
     facebook = models.CharField(max_length=45, null=True)
     twitter = models.CharField(max_length=45, null=True)
-    modality = models.ForeignKey(choices=modality_l)
+    modality = models.CharField(choices=modality_l, max_length=10)
 
     def __unicode__(self):
         return self.name + ' => ' + self.modality.name
@@ -100,27 +100,6 @@ class Player(models.Model):
         return self.firstName + ' ' + self.lastName
 
 
-class Game(models.Model):
-    referee = models.ForeignKey(Referee)
-    teamA = models.ForeignKey(Team, related_name='idA')
-    teamB = models.ForeignKey(Team, related_name='idB')
-    tournament = models.ForeignKey(Tournament)
-
-    def __unicode__(self):
-        return self.name
-
-
-class Award(models.Model):
-    name = models.CharField(max_length=45)
-    amount = models.FloatField()
-    description = models.TextField(max_length=100)
-    game = models.ForeignKey(Game)
-    player = models.ForeignKey(Player)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Tournament(models.Model):
     name = models.CharField(max_length=45)
     year_l = (
@@ -145,6 +124,29 @@ class Tournament(models.Model):
 
     def __unicode__(self):
         return self.name
+
+
+class Game(models.Model):
+    referee = models.ForeignKey(Referee)
+    teamA = models.ForeignKey(Team, related_name='idA')
+    teamB = models.ForeignKey(Team, related_name='idB')
+    tournament = models.ForeignKey(Tournament)
+
+    def __unicode__(self):
+        return self.name
+
+
+class Award(models.Model):
+    name = models.CharField(max_length=45)
+    amount = models.FloatField()
+    description = models.TextField(max_length=100)
+    game = models.ForeignKey(Game)
+    player = models.ForeignKey(Player)
+
+    def __unicode__(self):
+        return self.name
+
+
 
 
 
