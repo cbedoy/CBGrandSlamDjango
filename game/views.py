@@ -5,7 +5,8 @@ from .models import *
 from .forms import *
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.core.urlresolvers import reverse_lazy
-from django.views.generic import TemplateView,ListView
+from django.views.generic import ListView
+from django.db import connection
 
 
 def index(request):
@@ -246,3 +247,11 @@ class GameUpdate(UpdateView):
 class GameDelete(DeleteView):
     model = Game
     success_url = reverse_lazy('game_list')
+
+
+
+def query_test(request):
+    cursor = connection.cursor()
+    cursor.execute('select firstname, sex, facebook from game_player')
+    data = cursor.fetchall()
+    return render_to_response('select.html', {"form":data})
