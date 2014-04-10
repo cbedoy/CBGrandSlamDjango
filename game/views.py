@@ -250,6 +250,10 @@ class GameDelete(DeleteView):
 
 
 
+class GrandSlamCreate(CreateView):
+    model = GrandSlam
+    success_url = reverse_lazy('player_list')
+
 def query_test(request):
     cursor = connection.cursor()
     cursor.execute('select firstname, sex, facebook from game_player')

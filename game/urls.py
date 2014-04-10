@@ -67,6 +67,10 @@ urlpatterns = patterns('',
     url(r'^trainer/delete/(?P<pk>\d+)$', views.TrainerDelete.as_view(), name='trainer_delete'),
 
 
+    url(r'^grandslam/new$', views.GrandSlamCreate.as_view(), name='player_list'),
+
     url(r'^select$', 'game.views.query_test'),
+
+
 
 )
