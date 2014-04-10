@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 
+
 class Country(models.Model):
     name = models.CharField(max_length=45)
 
@@ -10,19 +11,6 @@ class Country(models.Model):
 
 class Location(models.Model):
     name = models.CharField(max_length=45)
-    longitud = models.FloatField()
-    latitud = models.FloatField()
-    country = models.ForeignKey(Country)
-
-    def __unicode__(self):
-        return self.name
-
-
-
-
-class Tournament(models.Model):
-    name = models.CharField(max_length=45)
-    description = models.TextField(max_length=100)
     country = models.ForeignKey(Country)
 
     def __unicode__(self):
@@ -57,25 +45,26 @@ class Trainer(models.Model):
 
 class Nationality(models.Model):
     name = models.CharField(max_length=45)
-    link = models.CharField(max_length=150)
-    abreviature = models.CharField(max_length=3)
 
     def __unicode__(self):
-        return self.name + '-' + self.abreviature
+        return self.name
 
 
-class Modality(models.Model):
-    name_l = (
+class Team(models.Model):
+    modality_l = (
         ('SINGLE-M', 'SINGLE-M'),
         ('TEAM-M', 'TEAM-M'),
         ('SINGLE-F', 'SINGLE-F'),
         ('TEAM-F', 'TEAM-F'),
         ('MIX', 'MIX'),
     )
-    name = models.CharField(max_length=10, choices=name_l)
-    def __unicode__(self):
-        return self.name
+    name = models.CharField(max_length=45)
+    facebook = models.CharField(max_length=45, null=True)
+    twitter = models.CharField(max_length=45, null=True)
+    modality = models.ForeignKey(choices=modality_l)
 
+    def __unicode__(self):
+        return self.name + ' => ' + self.modality.name
 
 
 class Player(models.Model):
@@ -100,26 +89,16 @@ class Player(models.Model):
     lastName = models.CharField(max_length=45)
     age = models.IntegerField(choices=age_l)
     sex = models.CharField(max_length=10, choices=sex_l)
-    height = models.FloatField()
-    weight = models.FloatField()
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
     telephone = models.CharField(max_length=45, null=True)
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
+    team = models.ForeignKey(Team)
 
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
 
-
-class Team(models.Model):
-    name = models.CharField(max_length=45)
-    facebook = models.CharField(max_length=45)
-    twitter = models.CharField(max_length=45)
-    player = models.ForeignKey(Player)
-    modality = models.ForeignKey(Modality)
-    def __unicode__(self):
-        return self.name + ' => ' + self.modality.name
 
 class Game(models.Model):
     referee = models.ForeignKey(Referee)
@@ -130,18 +109,20 @@ class Game(models.Model):
     def __unicode__(self):
         return self.name
 
+
 class Award(models.Model):
     name = models.CharField(max_length=45)
     amount = models.FloatField()
     description = models.TextField(max_length=100)
     game = models.ForeignKey(Game)
     player = models.ForeignKey(Player)
-    trainer = models.ForeignKey(Trainer)
 
     def __unicode__(self):
         return self.name
 
-class GrandSlam(models.Model):
+
+class Tournament(models.Model):
+    name = models.CharField(max_length=45)
     year_l = (
         (2010, '2010'),
         (2011, '2011'),
@@ -159,9 +140,11 @@ class GrandSlam(models.Model):
         (2023, '2023'),
     )
     year = models.IntegerField(choices=year_l)
-    tournament = models.ForeignKey(Tournament)
+    description = models.TextField(max_length=100)
+    location = models.ForeignKey(Location)
 
     def __unicode__(self):
-        return self.year
+        return self.name
+
 
 

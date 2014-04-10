@@ -146,25 +146,6 @@ class NationalityDelete(DeleteView):
     model = Nationality
     success_url = reverse_lazy('nationality_list')
 
-#Modality --------------------------
-
-class ModalityList(ListView):
-    model = Modality
-
-
-class ModalityCreate(CreateView):
-    model = Modality
-    success_url = reverse_lazy('modality_list')
-
-
-class ModalityUpdate(UpdateView):
-    model = Modality
-    success_url = reverse_lazy('modality_list')
-
-
-class ModalityDelete(DeleteView):
-    model = Modality
-    success_url = reverse_lazy('modality_list')
 
 #Teams --------------------------
 
@@ -250,9 +231,6 @@ class GameDelete(DeleteView):
 
 
 
-class GrandSlamCreate(CreateView):
-    model = GrandSlam
-    success_url = reverse_lazy('player_list')
 
 def query_test(request):
     cursor = connection.cursor()

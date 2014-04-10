@@ -31,11 +31,6 @@ urlpatterns = patterns('',
     url(r'^location/edit/(?P<pk>\d+)$', views.LocationUpdate.as_view(), name='location_edit'),
     url(r'^location/delete/(?P<pk>\d+)$', views.LocationDelete.as_view(), name='location_delete'),
 
-    url(r'^modality/list$', views.ModalityList.as_view(), name='modality_list'),
-    url(r'^modality/new$', views.ModalityCreate.as_view(), name='modality_new'),
-    url(r'^modality/edit/(?P<pk>\d+)$', views.ModalityUpdate.as_view(), name='modality_edit'),
-    url(r'^modality/delete/(?P<pk>\d+)$', views.ModalityDelete.as_view(), name='modality_delete'),
-
     url(r'^nationality/list$', views.NationalityList.as_view(), name='nationality_list'),
     url(r'^nationality/new$', views.NationalityCreate.as_view(), name='nationality_new'),
     url(r'^nationality/edit/(?P<pk>\d+)$', views.NationalityUpdate.as_view(), name='nationality_edit'),
@@ -66,8 +61,6 @@ urlpatterns = patterns('',
     url(r'^trainer/edit/(?P<pk>\d+)$', views.TrainerUpdate.as_view(), name='trainer_edit'),
     url(r'^trainer/delete/(?P<pk>\d+)$', views.TrainerDelete.as_view(), name='trainer_delete'),
 
-
-    url(r'^grandslam/new$', views.GrandSlamCreate.as_view(), name='player_list'),
 
     url(r'^select$', 'game.views.query_test'),
 
