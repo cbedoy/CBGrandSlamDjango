@@ -62,9 +62,9 @@ class Team(models.Model):
     facebook = models.CharField(max_length=45, null=True)
     twitter = models.CharField(max_length=45, null=True)
     modality = models.CharField(choices=modality_l, max_length=10)
-
+    unicode(name)
     def __unicode__(self):
-        return self.name + ' => ' + self.modality.name
+        return self.name + ' -> ' + self.modality
 
 
 class Player(models.Model):
@@ -133,7 +133,7 @@ class Game(models.Model):
     tournament = models.ForeignKey(Tournament)
 
     def __unicode__(self):
-        return self.name
+        return self.teamA.name + ' VS ' + self.teamB.name
 
 
 class Award(models.Model):

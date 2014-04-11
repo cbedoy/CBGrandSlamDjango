@@ -234,6 +234,7 @@ class GameDelete(DeleteView):
 
 def query_test(request):
     cursor = connection.cursor()
-    cursor.execute('select firstname, sex, facebook from game_player')
-    data = cursor.fetchall()
-    return render_to_response('select.html', {"form":data})
+    cursor.execute(
+        'select name as name, (select name from game_country where id=country_id)  as location from game_location')
+    results = cursor.fetchall()
+    return render_to_response('hard_queries/four.html', {"results":results})
