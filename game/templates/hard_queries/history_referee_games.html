@@ -1,37 +1,40 @@
 {% extends "base.html" %}
         {% block header %}Report about the history referee games{% endblock %}
 {% block content %}
-<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
-    {%  for result in results %}
-    <div data-role="collapsible" data-theme="a" data-content-theme="a">
-            <h3>{{result.0}} {{result.1}} - {{result.6}}</h3>
-        The referee <b>{{result.0}} {{result.1}}</b> with nationality {{result.2}} with <b>{{result.3}}</b> years old.<br>
+    <div data-role="collapsible-set" data-theme="c" data-content-theme="a">
+        {%for result in results %}
+            <div data-role="collapsible" data-theme="a" data-content-theme="a">
+                <h3>{{result.1}} {{result.2}} at {{result.8}}</h3>
+                <b>{{result.1}} {{result.2}}</b> has participed at the tournament <b>{{result.8}}</b> in the date<br>
+                <b>{{result.7}}</b> this only have <b>{{result.4}}</b> years old, he appears in the
 
-         <b>He</b> he has participated in {{result.7}} tournaments with the time
-        {% if result.4 == 'AT' %}
-            <b>All time</b>:<br>
-        {%else %}
-            <b>Half time</b>:<br>
-        {%endif%}
-            <table border="1">
-                <tr>
-                    <td colspan="1">Information</td>
-                </tr>
-                <tr>
-                    <td>{{result.4}}</td>
-                </tr>
-                <tr>
-                    <td>{{result.5}}</td>
-                </tr>
-                <tr>
-                    <td></td>
-                </tr>
-            </table>
+                {% if result.5 == 'AT' %}
+                    <b>Time completed</b>
+                {%else%}
+                    <b>Half-time</b>
+                {%endif%}
+                <br>
+                <table border="1">
+                    <tr>
+                        <td colspan="2">More information here</td>
+                    </tr>
+                    <tr>
+                        <td>Nationality</td>
+                        <td>   {{result.3}}</td>
+                    </tr>
+                    <tr>
+                        <td>Email</td>
+                        <td>    {{result.6}}</td>
+                    </tr>
+                </table>
+
+            </div>
+
+        {% endfor %}
+        <div data-role="collapsible" data-theme="c" data-content-theme="a">
+                <h3>Total of games: {{counts[0].0}}</h3>
         </div>
-
-
-    {% endfor %}
-</div>
+    </div>
 {% endblock %}
 {% block footer %}
 Develop by carlos bedoy :)

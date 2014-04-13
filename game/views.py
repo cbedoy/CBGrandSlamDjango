@@ -259,23 +259,31 @@ def query_sum_awards_per_player(request):
 
 def query_history_referee_games(request):
     cursor = connection.cursor()
-    cursor.execute(''
-                   'select '
-                   'DISTINCT '
-                   'firstName, '
-                   'lastName, '
-                   '(select name from game_nationality where nationality_id= game_referee.id), '
-                   'age, '
-                   'time, '
-                   'email, '
-                   '(select name from game_tournament where game_tournament.id = game_game.tournament_id), '
-                   '(select count(*) from game_game where game_game.referee_id = game_referee.id and '
-                   '(select id from game_tournament where game_tournament.id = game_game.tournament_id) = game_game.tournament_id) '
-                   'from '
-                   'game_referee '
-                   'inner join '
-                   'game_game '
-                   'where '
-                   'game_referee.id = game_game.referee_id')
+    cursor.execute(
+        'select '
+        'game_referee.id, '
+        'firstName, '
+        'lastName, '
+        '(select name from game_nationality where game_nationality.id = nationality_id), '
+        'age, '
+        'time, '
+        'email, '
+        'date, '
+        'name '
+
+        'from '
+        'game_tournament '
+        'inner join '
+        'game_game '
+        'inner join '
+        'game_referee '
+        'where '
+        'game_tournament.id = game_game.tournament_id '
+        'and '
+        'game_referee.id = game_game.referee_id'
+    )
     results = cursor.fetchall()
-    return render_to_response('hard_queries/history_referee_games.html', {"results": results})
+    cursor.execute('select count(*) from game_game')
+    counts = cursor.fetchall()
+    return render_to_response('hard_queries/history_referee_games.html', {"results": results, "counts": counts})
+
