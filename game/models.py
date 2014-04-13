@@ -1,7 +1,6 @@
 from django.db import models
 
 
-
 class Country(models.Model):
     name = models.CharField(max_length=45)
 
@@ -17,15 +16,42 @@ class Location(models.Model):
         return self.name
 
 
+class Nationality(models.Model):
+    name = models.CharField(max_length=45)
+
+    def __unicode__(self):
+        return self.name
+
+
 class Referee(models.Model):
     time_l = (
-        ('QT', 'Quart time'),
-        ('MT', 'Medium time'),
-        ('AT', 'All time'),
+        ('HT', 'Hall Time'),
+        ('AT', 'All Time'),
     )
-    firstName = models.CharField(max_length=45)
-    lastName = models.CharField(max_length=45)
+    firstName = models.CharField('First name', max_length=45)
+    lastName = models.CharField('Last name', max_length=45)
+    nationality = models.ForeignKey(Nationality)
+    age_l = (
+        (25, '25'),
+        (26, '26'),
+        (27, '27'),
+        (28, '28'),
+        (29, '29'),
+        (30, '30'),
+        (31, '31'),
+        (32, '32'),
+        (33, '33'),
+        (34, '34'),
+        (35, '35'),
+        (36, '36'),
+        (37, '37'),
+        (38, '38'),
+        (39, '39'),
+        (40, '40'),
+    )
+    age = models.IntegerField(choices=age_l)
     time = models.CharField(max_length=45, choices=time_l)
+    email = models.CharField(max_length=45, null=True)
 
     def __unicode__(self):
         return self.firstName + ' ' + self.lastName
@@ -34,8 +60,29 @@ class Referee(models.Model):
 class Trainer(models.Model):
     firstName = models.CharField(max_length=45)
     lastName = models.CharField(max_length=45)
-    initialDate = models.DateField()
-    lastDate = models.DateField()
+    nationality = models.ForeignKey(Nationality)
+    age_l = (
+        (25, '25'),
+        (26, '26'),
+        (27, '27'),
+        (28, '28'),
+        (29, '29'),
+        (30, '30'),
+        (31, '31'),
+        (32, '32'),
+        (33, '33'),
+        (34, '34'),
+        (35, '35'),
+        (36, '36'),
+        (37, '37'),
+        (38, '38'),
+        (39, '39'),
+        (40, '40'),
+    )
+    age = models.IntegerField(choices=age_l)
+    email = models.CharField(max_length=45, null=True)
+    initialDate = models.DateField('Initial date')
+    lastDate = models.DateField('Last date')
     unicode(initialDate)
     unicode(lastDate)
 
@@ -43,22 +90,15 @@ class Trainer(models.Model):
         return self.firstName + ' ' + self.lastName
 
 
-class Nationality(models.Model):
-    name = models.CharField(max_length=45)
-
-    def __unicode__(self):
-        return self.name
-
-
 class Team(models.Model):
     modality_l = (
-        ('SINGLE-M', 'SINGLE-M'),
-        ('TEAM-M', 'TEAM-M'),
-        ('SINGLE-F', 'SINGLE-F'),
-        ('TEAM-F', 'TEAM-F'),
-        ('MIX', 'MIX'),
+        ('SINGLE-M', 'SINGLE-MALE'),
+        ('TEAM-M', 'TEAM-MALE'),
+        ('SINGLE-F', 'SINGLE-FEMALE'),
+        ('TEAM-F', 'TEAM-FEMALE'),
+        ('MIXED', 'MIXED'),
     )
-    name = models.CharField(max_length=45)
+    name = models.CharField(max_length=45, unique=True)
     facebook = models.CharField(max_length=45, null=True)
     twitter = models.CharField(max_length=45, null=True)
     modality = models.CharField(choices=modality_l, max_length=10)
@@ -71,7 +111,7 @@ class Team(models.Model):
 class Player(models.Model):
     sex_l = (
         ('F', 'Female'),
-        ('M', 'Masculine'),
+        ('M', 'Male'),
     )
     age_l = (
         (20, '20'),
@@ -86,13 +126,15 @@ class Player(models.Model):
         (29, '29'),
         (30, '30'),
     )
-    firstName = models.CharField(max_length=45)
-    lastName = models.CharField(max_length=45)
+    firstName = models.CharField('First name', max_length=45)
+    lastName = models.CharField('Last name', max_length=45)
     age = models.IntegerField(choices=age_l)
     sex = models.CharField(max_length=10, choices=sex_l)
+    height = models.IntegerField(null=True)
+    weight = models.IntegerField(null=True)
     web = models.CharField(max_length=45, null=True)
     facebook = models.CharField(max_length=45, null=True)
-    telephone = models.CharField(max_length=45, null=True)
+    email = models.CharField(max_length=45, null=True)
     nationality = models.ForeignKey(Nationality)
     trainer = models.ForeignKey(Trainer)
     team = models.ForeignKey(Team)
@@ -118,7 +160,6 @@ class Tournament(models.Model):
         (2023, '2025'),
 
     )
-
     year = models.IntegerField(choices=year_l)
 
     def __unicode__(self):
@@ -140,7 +181,6 @@ class Award(models.Model):
     name = models.CharField(max_length=45)
     amount = models.FloatField()
     description = models.CharField(max_length=45)
-    game = models.ForeignKey(Game)
     player = models.ForeignKey(Player)
 
     def __unicode__(self):
