@@ -244,7 +244,7 @@ def query_sum_awards_per_player(request):
         'sex, '
         'facebook, '
         'web, '
-        'telephone, '
+        'email, '
         '(select name from game_nationality where nationality_id= game_player.id), '
         '(select sum(amount) from game_award where player_id = game_player.id) '
         'from '
@@ -254,5 +254,28 @@ def query_sum_awards_per_player(request):
         'where '
         'game_player.id = game_award.player_id')
     results = cursor.fetchall()
-    return render_to_response('hard_queries/query2.html', {"results" : results})
+    return render_to_response('hard_queries/record_amounts.html', {"results" : results})
 
+
+def query_history_referee_games(request):
+    cursor = connection.cursor()
+    cursor.execute(''
+                   'select '
+                   'DISTINCT '
+                   'firstName, '
+                   'lastName, '
+                   '(select name from game_nationality where nationality_id= game_referee.id), '
+                   'age, '
+                   'time, '
+                   'email, '
+                   '(select name from game_tournament where game_tournament.id = game_game.tournament_id), '
+                   '(select count(*) from game_game where game_game.referee_id = game_referee.id and '
+                   '(select id from game_tournament where game_tournament.id = game_game.tournament_id) = game_game.tournament_id) '
+                   'from '
+                   'game_referee '
+                   'inner join '
+                   'game_game '
+                   'where '
+                   'game_referee.id = game_game.referee_id')
+    results = cursor.fetchall()
+    return render_to_response('hard_queries/history_referee_games.html', {"results": results})
