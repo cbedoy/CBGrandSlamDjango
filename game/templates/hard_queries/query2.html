@@ -1,9 +1,39 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+        {% block header %}Report of player with their amount score{% endblock %}
+{% block content %}
+<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    {%  for result in results %}
 
-</body>
-</html>
+        <div data-role="collapsible" data-theme="a" data-content-theme="a">
+            <h3>{{result.0}} {{result.1}}</h3>
+        The player <b>{{result.0}} {{result.1}}</b> with nationality <b>{{result.7}}</b> with <b>{{result.2}}</b> years old.<br>
+            {% if result.3 == "M" %}
+                <b>He</b> has won <b>${{result.8}}</b>
+            {% else %}
+                <b>She</b> has won <b>${{result.8}}</b>
+            {% endif %}
+            over {% if result.3 == "M" %}<b>his</b> {% else %}<b>her</b> {% endif %} involvement at <b>GrandSlam</b>. <br><br>
+            <table border="1">
+                <tr>
+                    <td colspan="2">For learn more about the player check out the next links :)</td>
+                </tr>
+                <tr>
+                    <td>Facebook</td>
+                    <td>{{result.4}}</td>
+                </tr>
+                <tr>
+                    <td>Webpage</td>
+                    <td>{{result.5}}</td>
+                </tr>
+                <tr>
+                    <td>Cellphone</td>
+                    <td>{{result.6}}</td>
+                </tr>
+            </table>
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
+{% block footer %}
+Develop by carlos bedoy :)
+{% endblock %}

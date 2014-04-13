@@ -233,20 +233,26 @@ class GameDelete(DeleteView):
 
 
 
-def query_test(request):
+def query_sum_awards_per_player(request):
     cursor = connection.cursor()
     cursor.execute(
         'select '
+        'DISTINCT '
         'firstname, '
         'lastname, '
         'age, '
         'sex, '
         'facebook, '
-        'nationality_id, '
-        'id, '
-        '(select name from game_nationality where nationality_id=id), '
-        '(select sum(amount) from game_award where player_id = id) '
+        'web, '
+        'telephone, '
+        '(select name from game_nationality where nationality_id= game_player.id), '
+        '(select sum(amount) from game_award where player_id = game_player.id) '
         'from '
-        'game_player')
+        'game_player '
+        'inner join '
+        'game_award '
+        'where '
+        'game_player.id = game_award.player_id')
     results = cursor.fetchall()
-    return render_to_response('hard_queries/query1.html', {"results":results})
+    return render_to_response('hard_queries/query2.html', {"results" : results})
+
