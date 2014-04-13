@@ -4,15 +4,18 @@
     {% endblock %}
 
         {% block content %}
-            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+            <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke" border="1">
                 <thead>
                     <tr>
                         <th>ID</th>
                       <th data-priority="1">First name</th>
                       <th data-priority="2">Last name</th>
-                      <th data-priority="2">Time</th>
-                        <th data-priority="5">Edit</th>
-              <th data-priority="5">Delete</th>
+                        <th data-priority="3">Nationality</th>
+                        <th data-priority="4">Age</th>
+                      <th data-priority="5">Time</th>
+                        <th data-priority="6">Email</th>
+                        <th data-priority="7">Edit</th>
+              <th data-priority="8">Delete</th>
                     </tr>
                   </thead>
                 <tbody>
@@ -21,7 +24,14 @@
                     <th>{{o.id}}</th>
                     <th>{{o.firstName}}</th>
                      <th>{{o.lastName}}</th>
-                     <th>{{o.time}}</th>
+                     <th>{{o.nationality}}</th>
+                     <th>{{o.age}}</th>
+                     <th>{% if o.time == 'AT' %}
+                            All-time
+                         {% else %}
+                            Half-time
+                         {% endif %}</th>
+                     <th>{{o.email}}</th>
                 <td><a href="{% url referee_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
                  <td><a href="{% url referee_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
             </tr>

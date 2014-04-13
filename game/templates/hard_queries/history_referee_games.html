@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+        {% block header %}Report about the history referee games{% endblock %}
+{% block content %}
+<div data-role="collapsible-set" data-theme="c" data-content-theme="d">
+    {%  for result in results %}
+    <div data-role="collapsible" data-theme="a" data-content-theme="a">
+            <h3>{{result.0}} {{result.1}} - {{result.6}}</h3>
+        The referee <b>{{result.0}} {{result.1}}</b> with nationality {{result.2}} with <b>{{result.3}}</b> years old.<br>
+
+         <b>He</b> he has participated in {{result.7}} tournaments with the time
+        {% if result.4 == 'AT' %}
+            <b>All time</b>:<br>
+        {%else %}
+            <b>Half time</b>:<br>
+        {%endif%}
+            <table border="1">
+                <tr>
+                    <td colspan="1">Information</td>
+                </tr>
+                <tr>
+                    <td>{{result.4}}</td>
+                </tr>
+                <tr>
+                    <td>{{result.5}}</td>
+                </tr>
+                <tr>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+
+    {% endfor %}
+</div>
+{% endblock %}
+{% block footer %}
+Develop by carlos bedoy :)
+{% endblock %}

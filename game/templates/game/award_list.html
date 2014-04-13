@@ -4,16 +4,14 @@ Report Awards
 {% endblock %}
 
 {% block content %}
-    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke">
+    <table data-role="table" id="movie-table" data-mode="reflow" class="ui-responsive table-stroke" border="1">
         <thead>
             <tr>
               <th data-priority="1">Id</th>
               <th data-priority="1">Name</th>
               <th data-priority="2">Amount</th>
               <th data-priority="2">Description</th>
-              <th data-priority="3">Tournament</th>
               <th data-priority="4">Player</th>
-              <th data-priority="5">Trainer</th>
               <th data-priority="5">Edit</th>
               <th data-priority="5">Delete</th>
             </tr>
@@ -25,9 +23,7 @@ Report Awards
           <th>{{o.name}}</th>
           <td>{{o.amount}}</td>
           <td>{{o.description}}</td>
-          <td>{{o.game}}</td>
-            <td>{{o.player}}</td>
-          <td>{{o.trainer}}</td>
+          <td>{{o.player}}</td>
           <td><a href="{% url award_edit o.id %}" data-role="button" data-mini="true" data-icon="edit" data-iconpos="notext"></a></td>
           <td><a href="{% url award_delete o.id %}" data-role="button" data-mini="true" data-icon="delete" data-iconpos="notext">.</a></td>
         </tr>
