@@ -4,6 +4,11 @@
     {{ form.as_p }}
     <input type="submit" value="Add" />
 </form>
+    <script >
+            $(document).ready(function(){
+                $('#id_name').attr('placeholder', 'The big grand slam :p');
+            });
+    </script>
 
 {% endblock %}
 {% block footer %}

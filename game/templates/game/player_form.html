@@ -4,7 +4,15 @@
     {{ form.as_p }}
     <input type="submit" value="Add" />
 </form>
-
+   <script >
+            $(document).ready(function(){
+                $('#id_firstName').attr('placeholder', 'Carlos Alfredo');
+                $('#id_lastName').attr('placeholder', 'Cervantes Bedoy');
+                $('#id_web').attr('placeholder', 'cbedoy.github.io');
+                $('#id_facebook').attr('placeholder', 'facebook.com/carlos.bedoy');
+                $('#id_telephone:').attr('placeholder', '4491470000');
+            });
+    </script>
 {% endblock %}
         {% block footer %}
 Develop by carlos bedoy :)

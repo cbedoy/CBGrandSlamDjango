@@ -4,6 +4,13 @@
     {{ form.as_p }}
     <input type="submit" value="Add" />
 </form>
+<script >
+            $(document).ready(function(){
+                $('#id_name').attr('placeholder', 'First place or maybe last place?');
+                $('#id_amount').attr('placeholder', '$9999999.99');
+                $('#id_description').attr('placeholder', 'short description.....');
+            });
+    </script>
 
 {% endblock %}
         {% block footer %}

@@ -4,7 +4,11 @@
     {{ form.as_p }}
     <input type="submit" value="Add" />
 </form>
-
+   <script >
+            $(document).ready(function(){
+                $('#id_name').attr('placeholder', 'Dubai, aguascalientes or everything');
+            });
+    </script>
 {% endblock %}
         {% block footer %}
 Develop by carlos bedoy :)

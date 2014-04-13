@@ -63,8 +63,9 @@ class Team(models.Model):
     twitter = models.CharField(max_length=45, null=True)
     modality = models.CharField(choices=modality_l, max_length=10)
     unicode(name)
+
     def __unicode__(self):
-        return self.name + ' -> ' + self.modality
+        return self.name + ' :: ' + self.modality
 
 
 class Player(models.Model):
@@ -103,10 +104,6 @@ class Player(models.Model):
 class Tournament(models.Model):
     name = models.CharField(max_length=45)
     year_l = (
-        (2010, '2010'),
-        (2011, '2011'),
-        (2012, '2012'),
-        (2013, '2013'),
         (2014, '2014'),
         (2015, '2015'),
         (2016, '2016'),
@@ -117,13 +114,15 @@ class Tournament(models.Model):
         (2021, '2021'),
         (2022, '2022'),
         (2023, '2023'),
+        (2023, '2024'),
+        (2023, '2025'),
+
     )
+
     year = models.IntegerField(choices=year_l)
-    description = models.TextField(max_length=100)
-    location = models.ForeignKey(Location)
 
     def __unicode__(self):
-        return self.name
+        return self.name + ' :: ' + str(self.year)
 
 
 class Game(models.Model):
@@ -131,6 +130,7 @@ class Game(models.Model):
     teamA = models.ForeignKey(Team, related_name='idA')
     teamB = models.ForeignKey(Team, related_name='idB')
     tournament = models.ForeignKey(Tournament)
+    date = models.DateField()
 
     def __unicode__(self):
         return self.teamA.name + ' VS ' + self.teamB.name
@@ -139,7 +139,7 @@ class Game(models.Model):
 class Award(models.Model):
     name = models.CharField(max_length=45)
     amount = models.FloatField()
-    description = models.TextField(max_length=100)
+    description = models.CharField(max_length=45)
     game = models.ForeignKey(Game)
     player = models.ForeignKey(Player)
 
