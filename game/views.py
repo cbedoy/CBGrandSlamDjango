@@ -287,3 +287,12 @@ def query_history_referee_games(request):
     counts = cursor.fetchall()
     return render_to_response('hard_queries/history_referee_games.html', {"results": results, "counts": counts})
 
+
+def history_of_trainers(request):
+    cursor = connection.cursor()
+    cursor.execute('select * from game_player inner join game_trainer where game_player.trainer_id = game_trainer.id')
+    results = cursor.fetchall()
+    return render_to_response('hard_queries/history_of_trainers.html', {"results": results})
+
+
+

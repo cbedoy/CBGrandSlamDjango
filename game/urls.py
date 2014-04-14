@@ -63,9 +63,8 @@ urlpatterns = patterns('',
 
 
     url(r'^record_amounts', 'game.views.query_sum_awards_per_player'),
-
     url(r'^history_referee_games', 'game.views.query_history_referee_games'),
-
+    url(r'^history_trainers', 'game.views.history_of_trainers'),
 
 
 )
