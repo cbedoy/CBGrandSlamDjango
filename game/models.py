@@ -171,6 +171,7 @@ class Game(models.Model):
     teamA = models.ForeignKey(Team, related_name='idA')
     teamB = models.ForeignKey(Team, related_name='idB')
     tournament = models.ForeignKey(Tournament)
+    location = models.ForeignKey(Location)
     date = models.DateField()
 
     def __unicode__(self):
