@@ -17,17 +17,17 @@
     <div data-role="panel" data-position="left" data-position-fixed="false" data-display="reveal" id="nav-panel" data-theme="b">
 
         <div data-role="collapsible-set">
-            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>GrandSlamm</h3>
-                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                <ul data-role="listview" data-theme="d" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
                     <li><a href="#">Home</a></li>
-                    <li><a href="#">Github</a></li>
+                    <li><a href="https://github.com/cbedoy/CBGrandSlamDjango/tree/develop">Github</a></li>
                     <li><a href="#">Exit</a></li>
                 </ul>
             </div>
-            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>Items</h3>
-                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                <ul data-role="listview" data-theme="d" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
                     <li><a href="/grandslam/award/new" data-transition="pop">Award</a></li>
                     <li><a href="/grandslam/country/new" data-transition="pop">Country</a></li>
                     <li><a href="/grandslam/game/new" data-transition="pop">Game</a></li>
@@ -41,9 +41,9 @@
 
                 </ul>
             </div>
-            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>Reports</h3>
-                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                <ul data-role="listview" data-theme="d" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
                     <li><a href="/grandslam/award/list" data-transition="slidefade">Award</a></li>
                     <li><a href="/grandslam/country/list" data-transition="slidefade">Country</a></li>
                     <li><a href="/grandslam/game/list" data-transition="slidefade">Game</a></li>
@@ -57,9 +57,9 @@
                 </ul>
             </div>
 
-            <div data-role="collapsible" data-collapsed="true" data-theme="c" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
+            <div data-role="collapsible" data-collapsed="true" data-theme="a" data-collapsed-icon="arrow-r" data-expanded-icon="arrow-d">
                 <h3>Custom reports</h3>
-                <ul data-role="listview" data-theme="b" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
+                <ul data-role="listview" data-theme="d" data-divider-theme="b" style="margin-top:-16px;" class="nav-search">
                     <li><a href="/grandslam/record_amounts" data-transition="slidefade">Record amounts</a></li>
                     <li><a href="/grandslam/history_referee_games" data-transition="slidefade">Referee history games</a></li>
                     <li><a href="/grandslam/history_trainers" data-transition="slidefade">History of trainers</a></li>
@@ -80,21 +80,21 @@
 
 
 
-	<div data-role="header" data-theme="b">
+	<div data-role="header" data-theme="d">
 		<h1>{% block header %}{% endblock %}</h1>
             <a href="#nav-panel" data-icon="bars" data-iconpos="notext">Menu</a>
 		    <a href="#add-form" data-icon="plus" data-iconpos="notext">Add</a>
 	</div>
 
-	<div data-role="content" data-theme="b">
+	<div data-role="content" data-theme="a">
         {% block content %}{% endblock %}
 
 	</div>
 
     <div data-role="footer" data-theme="d">
-        <center>
+        <h1>
 		{% block footer %}{% endblock %}
-        </center>
+        </h1>
 
 	</div>
 </div>
