@@ -270,7 +270,6 @@ def query_history_referee_games(request):
         'email, '
         'date, '
         'name '
-
         'from '
         'game_tournament '
         'inner join '
@@ -290,7 +289,29 @@ def query_history_referee_games(request):
 
 def history_of_trainers(request):
     cursor = connection.cursor()
-    cursor.execute('select * from game_player inner join game_trainer where game_player.trainer_id = game_trainer.id')
+    cursor.execute(''
+                   'select '
+                   'game_player.firstName, '
+                   'game_player.lastName, '
+                   'game_player.age, '
+                   'game_player.sex, '
+                   'game_player.height, '
+                   'game_player.weight, '
+                   '(select name from game_nationality where game_player.nationality_id= game_nationality.id), '
+                   'game_trainer.firstName, '
+                   'game_trainer.lastName, '
+                   'game_trainer.age,'
+                   'game_trainer.email, '
+                   'game_trainer.initialDate, '
+                   'game_trainer.lastDate, '
+                   '(select name from game_nationality where game_trainer.nationality_id= game_nationality.id) '
+                   'from '
+                   'game_player '
+                   'inner join '
+                   'game_trainer '
+                   'where '
+                   'game_player.trainer_id = game_trainer.id '
+                   '')
     results = cursor.fetchall()
     return render_to_response('hard_queries/history_of_trainers.html', {"results": results})
 

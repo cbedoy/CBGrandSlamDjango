@@ -1,11 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
+{% extends "base.html" %}
+        {% block header %}Report about the history of trainners{% endblock %}
 {% block content %}
-    {{  results }}
+    <div data-role="collapsible-set" data-theme="c" data-content-theme="a">
+        {%for result in results %}
+            <div data-role="collapsible" data-theme="a" data-content-theme="a">
+                <h3><b>{{result.7}}{{result.8}}</b> trainer of <b>{{result.0}} {{result.1}}</b> </h3>
+                <b>{{result.7}} {{result.8}}</b>  has been a trainer from <b>{{ result.11}}</b>  to <b>{{result.12}}</b> ,
+                he is <b>{{result.13}}</b> meters
+                with <b>{{result.9}}</b>  years old, his student is:
+                <br>
+                <b>{{result.0}} {{result.1}},</b>  with <b>{{result.2}}</b>  years old, also he has a height of
+                <b>{{result.4}}</b>  and his weight is
+                <b>{{result.5}}</b>  kg, too he is <b>{{result.6}}</b>
+            </div>
+
+        {% endfor %}
+    </div>
 {% endblock %}
-</body>
-</html>
+{% block footer %}
+Develop by carlos bedoy :)
+{% endblock %}
