@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+        {% block header %}Players in {{result.5}}{% endblock %}
+{% block content %}
+    <div data-role="collapsible-set" data-theme="c" data-content-theme="a">
+        The team <b>{{result.5}}</b> had the next players:
+        <table border="1" widght="50%"><br><br>
+        {%for result in results %}
+                - {{result.0}} {{result.1}} with {{result.2}} years old, sex: {{result.3}},
+                his facebook is {{result.4}} and email{{result.5}}
+                <br><br>
+        {% endfor %}
+        </table>
+    </div>
+{% endblock %}
+{% block footer %}
+Develop by carlos bedoy :)
+{% endblock %}

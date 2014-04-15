@@ -317,3 +317,42 @@ def history_of_trainers(request):
 
 
 
+def team_integrates(request):
+    cursor = connection.cursor()
+    cursor.execute(''
+                   'select '
+                   'game_team.id, '
+                   'game_team.name, '
+                   'game_team.modality, '
+                   'game_team.facebook, '
+                   'game_team.twitter, '
+                   'count(*) '
+                   'from '
+                   'game_player '
+                   'inner join '
+                   'game_team '
+                   'where '
+                   'game_player.team_id = game_team.id '
+                   'group by '
+                   'modality ')
+    results = cursor.fetchall()
+    return render_to_response('hard_queries/team_integrates.html', {"results": results})
+
+
+def get_player_by_team_id(request, id):
+    cursor = connection.cursor()
+    cursor.execute(''
+                   'select '
+                   'firstName, '
+                   'lastName, '
+                   'age, '
+                   'sex, '
+                   'facebook, '
+                   'email, '
+                   '(select name from game_team where game_team.id = ' + str(id) + ') '
+                   'from '
+                   'game_player '
+                   'where '
+                   'team_id = ' + str(id))
+    results = cursor.fetchall()
+    return render_to_response('hard_queries/players_in_team.html', {"results": results})

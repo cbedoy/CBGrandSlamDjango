@@ -66,5 +66,10 @@ urlpatterns = patterns('',
     url(r'^history_referee_games', 'game.views.query_history_referee_games'),
     url(r'^history_trainers', 'game.views.history_of_trainers'),
 
+    url(r'^team_integrates', 'game.views.team_integrates'),
+
+    url(r'^players_in_team/(?P<id>\d+)$', 'game.views.get_player_by_team_id'),
+
+
 
 )
